@@ -6,9 +6,9 @@
     <title>Progress</title>
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <script src="assets/script/jquery.min.js" ></script>
-    <script src="assets/script/popper.min.js" ></script>
-    <script src="assets/script/bootstrap.min.js" ></script>
+    <script src="assets/script/jquery.min.js"></script>
+    <script src="assets/script/popper.min.js"></script>
+    <script src="assets/script/bootstrap.min.js"></script>
     <style>
         #myProgress {
             width: 100%;
@@ -35,10 +35,10 @@
 
         <script>
             var i = 0;
+
             function move() {
-                if (i == 0) {
+                if (i === 0) {
                     i = 1;
-                    var elem = document.getElementById("myBar");
                     var width = 1;
                     var id = setInterval(frame, 20);
                     function frame() {
@@ -47,8 +47,7 @@
                             i = 0;
                         } else {
                             width++;
-                            $("#myBar").text(width + "%");
-                            elem.style.width = width + "%";
+                            $("#myBar").text(width + "%").css("width", width + "%");
                         }
                     }
                 }
