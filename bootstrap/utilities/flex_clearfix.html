@@ -5,11 +5,19 @@
     <meta charset="utf-8">
     <title>Flex</title>
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="../assets/css/style.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <style>
+        body {
+            counter-reset: section;
+        }
+        h2::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
         .bd-highlight {
             background-color: rgba(86, 61, 124, 0.15);
             border: 1px solid rgba(86, 61, 124, 0.15);
@@ -19,6 +27,11 @@
 
 <body>
     <div class="container mt-4">
+        <h2>Clearfix</h2>
+        <div class="bg-info clearfix bd-highlight mb-3">
+            <button type="button" class="btn btn-secondary float-left">Example Button floated left</button>
+            <button type="button" class="btn btn-secondary float-right">Example Button floated right</button>
+        </div>
         <h2>Flex row</h2>
         <div>
             <div class="d-flex flex-row bd-highlight mb-3">
@@ -32,7 +45,7 @@
                 <div class="p-2 bd-highlight">Flex item 3</div>
             </div>
         </div>
-        <h2>Flex column</h2>
+        <h2>Flex column & reverse</h2>
         <div>
             <div class="d-flex flex-column bd-highlight mb-3">
                 <div class="p-2">Flex item 1</div>

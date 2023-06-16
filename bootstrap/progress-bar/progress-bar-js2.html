@@ -44,14 +44,11 @@
             var progressBarText = $("#progress-bar-text");
             var width = 0;
             var interval;
-
             $("#start-button").click(function () {
                 if (interval) {
                     return; // Return if the progress bar is already running
                 }
-
                 interval = setInterval(frame, 10);
-
                 function frame() {
                     if (width >= 100) {
                         clearInterval(interval);
