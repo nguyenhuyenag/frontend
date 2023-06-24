@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="text-center">
+            <canvas id="bar-chart-grouped" width="800" height="450"></canvas>
+        </div>
+    </div>
+    <script>
+        new Chart(document.getElementById("bar-chart-grouped"), {
+            type: 'bar',
+            data: {
+                labels: ["1900", "1950", "1999", "2050"],
+                datasets: [
+                    {
+                        label: "Africa",
+                        backgroundColor: "#3e95cd",
+                        data: [133, 221, 783, 2478]
+                    }, {
+                        label: "Europe",
+                        backgroundColor: "#8e5ea2",
+                        data: [408, 547, 675, 734]
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Population growth (millions)'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
