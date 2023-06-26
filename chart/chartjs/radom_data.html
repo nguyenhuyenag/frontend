@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="shortcut icon" href="#">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
@@ -10,36 +11,68 @@
 <body>
     <div class="container mt-4">
         <div class="text-center">
-            <button class="btn btn-primary" onclick="drawChart()">ReDrawChart</button>
-            <button class="btn btn-primary" onclick="updateChart()">UpdateData</button>
-            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+            <!-- <button class="btn btn-primary" onclick="drawChart()">ReDrawChart</button> -->
+            <button class="btn btn-primary" onclick="updateChart()">Update</button>
+            <button class="btn btn-primary" onclick="clearChart()">Clear</button>
+            <canvas id="myChart" class="mt-2" style="width:100%;max-width:600px"></canvas>
         </div>
     </div>
     <script>
-        drawChart();
+        function updateChart2() {
+            let myChart = Chart.getChart("myChart");
+            if (myChart != undefined) {
+                const data = createRandomArray(6, 10, 100);
+                myChart.data.datasets[0].data = data;
+                myChart.update();
+            }
+        }
+
         function updateChart() {
+            let myChart = Chart.getChart("myChart");
+            if (myChart != undefined) {
+                // Change backgroundColor
+                var ctx = document.getElementById("myChart");
+                ctx.style.backgroundColor = 'rgb(180, 180, 180)';
+                
+                // Get cuurent label
+                let labels = myChart.data.labels;
+                let datasetColors = myChart.data.datasets[0]['backgroundColor'];
+                
+                // Current data
+                datasets = myChart.data.datasets;
+                console.log(datasets);
+                
+                // Remove current data
+                datasets.pop();
+                
+                // Update new data
+                datasets.push({
+                    label: labels,
+                    backgroundColor: datasetColors,
+                    data: createRandomArray(6, 10, 100)
+                });
+                myChart.update();
+            }
+        }
+
+        function clearChart() {
             let chart = Chart.getChart("myChart");
             if (chart != undefined) {
-                // chartStatus.destroy();
-                // chart.data.labels.push(label);
-                console.log(chart);
-                const dataset = createRandomArray(6, 10, 100);
-                chart.data.datasets.forEach((dataset) => {
-                    dataset.data.push(data);
-                });
+                chart.data.datasets[0].data = [];
                 chart.update();
             }
         }
-        function drawChart() {
+
+        (function () {
             let barColors = shuffleArray(["red", "green", "blue", "orange", "brown", "purple"]);
             let xValues = ["Italy", "France", "Spain", "USA", "Argentina", "China"];
             let yValues = createRandomArray(xValues.length, 10, 100);
 
             // Check chart exist
-            let chartStatus = Chart.getChart("myChart");
-            if (chartStatus != undefined) {
-                chartStatus.destroy();
-            }
+            // let chartStatus = Chart.getChart("myChart");
+            // if (chartStatus != undefined) {
+            //     chartStatus.destroy();
+            // }
 
             var chartCanvas = $('#myChart');
             // const chartCanvas = document.getElementById('myChart');
@@ -48,19 +81,18 @@
                 data: {
                     labels: xValues,
                     datasets: [{
-                        // label: none, // barColors,
                         data: yValues,
                         backgroundColor: barColors
                     }]
                 },
                 options: {
                     plugins: {
+                        legend: {
+                            display: false
+                        },
                         title: {
                             display: true,
                             text: "World Wine Production 2018"
-                        },
-                        legend: {
-                            display: false
                         },
                         tooltip: {
                             enabled: true
@@ -68,7 +100,7 @@
                     }
                 }
             });
-        }
+        })();
 
         function shuffleArray(array) {
             return array.sort(() => Math.random() - 0.5);
