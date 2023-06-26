@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lagueage='vi'>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+		// Tạo ra một hàm vô danh (anonymous function) và thực thi ngay lập tức 
+        (function () {
+            console.log("I'm anonymous function");
+        })();
+		const result = (function () {
+		  // Mã bên trong IIFE
+		  console.log("This is a IIFE!");
+		  
+		  // Trả về một hàm
+		  return function () {
+			console.log("This is a function return from IIFE!");
+		  };
+		})();
+		// Đóng mở và chạy
+		result();
+    </script>
+</body>
+
+</html>
