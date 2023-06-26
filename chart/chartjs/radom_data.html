@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="text-center">
+            <button class="btn btn-primary" onclick="drawChart()">Draw</button>
+            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        </div>
+    </div>
+    <script>
+        drawChart();
+        // function addData(chart, label, data) {
+        //     chart.data.labels.push(label);
+        //     chart.data.datasets.forEach((dataset) => {
+        //         dataset.data.push(data);
+        //     });
+        //     chart.update();
+        // }
+        function drawChart() {
+            let barColors = shuffleArray(["red", "green", "blue", "orange", "brown", "purple"]);
+            let xValues = ["Italy", "France", "Spain", "USA", "Argentina", "China"];
+            let yValues = createRandomArray(xValues.length, 10, 100);
+
+            // Check chart exist
+            let chartStatus = Chart.getChart("myChart");
+            if (chartStatus != undefined) {
+                chartStatus.destroy();
+            }
+
+            var chartCanvas = $('#myChart');
+            // const chartCanvas = document.getElementById('myChart');
+            new Chart(chartCanvas, {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        // label: none, // barColors,
+                        data: yValues,
+                        backgroundColor: barColors
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: "World Wine Production 2018"
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function shuffleArray(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function createRandomArray(length, min, max) {
+            const randomArray = [];
+            for (let i = 0; i < length; i++) {
+                const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+                randomArray.push(randomNumber);
+            }
+            return randomArray;
+        }
+    </script>
+</body>
+
+</html>
