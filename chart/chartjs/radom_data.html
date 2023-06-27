@@ -14,37 +14,26 @@
             <!-- <button class="btn btn-primary" onclick="drawChart()">ReDrawChart</button> -->
             <button class="btn btn-primary" onclick="updateChart()">Update</button>
             <button class="btn btn-primary" onclick="clearChart()">Clear</button>
-            <canvas id="myChart" class="mt-2" style="width:100%;max-width:600px"></canvas>
+            <canvas id="myChart" class="mt-2" style="width:100%;max-width:600px">
+                <p>Hello Fallback World</p>
+            </canvas>
         </div>
     </div>
     <script>
-        function updateChart2() {
-            let myChart = Chart.getChart("myChart");
-            if (myChart != undefined) {
-                const data = createRandomArray(6, 10, 100);
-                myChart.data.datasets[0].data = data;
-                myChart.update();
-            }
-        }
-
         function updateChart() {
             let myChart = Chart.getChart("myChart");
             if (myChart != undefined) {
-                // Change backgroundColor
-                var ctx = document.getElementById("myChart");
-                ctx.style.backgroundColor = 'rgb(180, 180, 180)';
-                
                 // Get cuurent label
                 let labels = myChart.data.labels;
                 let datasetColors = myChart.data.datasets[0]['backgroundColor'];
-                
+
                 // Current data
                 datasets = myChart.data.datasets;
                 console.log(datasets);
-                
+
                 // Remove current data
                 datasets.pop();
-                
+
                 // Update new data
                 datasets.push({
                     label: labels,
@@ -58,8 +47,21 @@
         function clearChart() {
             let chart = Chart.getChart("myChart");
             if (chart != undefined) {
+                // Change backgroundColor
+                var ctx = document.getElementById("myChart");
+                ctx.style.backgroundColor = 'rgb(180, 180, 180)';
+                // Clear
                 chart.data.datasets[0].data = [];
                 chart.update();
+            }
+        }
+
+        function updateChart2() {
+            let myChart = Chart.getChart("myChart");
+            if (myChart != undefined) {
+                const data = createRandomArray(6, 10, 100);
+                myChart.data.datasets[0].data = data;
+                myChart.update();
             }
         }
 
@@ -96,6 +98,11 @@
                         },
                         tooltip: {
                             enabled: true
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
                         }
                     }
                 }
