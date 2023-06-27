@@ -84,7 +84,9 @@
                     labels: xValues,
                     datasets: [{
                         data: yValues,
-                        backgroundColor: barColors
+                        backgroundColor: barColors,
+                        // borderColor: 'rgb(54, 162, 235)',
+                        // borderWidth: 10,
                     }]
                 },
                 options: {
@@ -96,28 +98,18 @@
                             display: true,
                             text: "World Wine Production 2018"
                         },
+                        subtitle: {
+                            display: true,
+                            text: 'Custom Chart Subtitle'
+                        },
                         tooltip: {
                             enabled: true
                         },
-                        // scales: {
-                        //     // y: {
-                        //     //     beginAtZero: true
-                        //     // }
-                        //     x: {
-                        //         type: 'time',
-                        //         min: new Date('2019-01-01').valueOf(),
-                        //         max: new Date('2019-12-31').valueOf()
-                        //     },
-                        //     y: {
-                        //         type: 'linear',
-                        //         min: 0,
-                        //         max: 100
-                        //     }
-                        // },
-                        // layout: {
-                        //     // padding: 0
-                        //     // left: 5000
-                        // }
+                        x: {
+                            border: {
+                                color: 'red'
+                            }
+                        }
                     }
                 }
             });
