@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            /**
+             * - $.get(URL, data, function(data, status, xhr), dataType)
+             * 
+             *      + data (tùy chọn): Dữ liệu sẽ được gửi đi với yêu cầu. Nó có thể là một chuỗi query parameter hoặc một đối tượng JavaScript được jQuery chuyển đổi thành chuỗi query parameter.
+             * 
+             *      + success (tùy chọn): Một hàm callback được gọi khi yêu cầu thành công. Dữ liệu phản hồi từ máy chủ được truyền vào hàm này.
+             * 
+             *      + dataType (tùy chọn): Kiểu dữ liệu mong đợi của phản hồi từ máy chủ, ví dụ như "json", "xml", "text" và "html". jQuery sẽ tự động phân tích phản hồi dựa trên kiểu dữ liệu này.
+             */
+            $(".btn-get").click(function () {
+                $.get("https://baconipsum.com/api/?type=meat-and-filler", function (data, status) {
+                    $('.output').text("Status: " + status + "\nData: " + data);
+                }).fail(function (xhr, status, error) {
+                    console.log("Error:", error);
+                });
+            });
+            $('.btn-get-json').click(() => {
+                $.getJSON("https://dummyjson.com/products/1", function (data, status) {
+                    let json = JSON.stringify(data, undefined, 4);
+                    $('.output').text(json);
+                }).fail(function (xhr, status, error) {
+                    console.log("Error:", error);
+                });
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <button class="btn-get">Ajax GET</button>
+        <br>
+        <button class="btn-get-json">Ajax getJSON</button>
+        <hr>
+        <pre class="output"></pre>
+    </div>
+</body>
+
+</html>
