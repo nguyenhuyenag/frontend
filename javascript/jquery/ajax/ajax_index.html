@@ -5,12 +5,18 @@
     <meta charset="UTF-8">
     <title>JQuery</title>
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        li {
+            cursor: pointer;
+        }
+    </style>
     <script>
         $(function () {
-            $("li").click(function () {
-                alert($(this).index());
+            $('li').on('click', function () {
+                var index = $(this).index();
+                $('#result').text('Index: ' + index);
             });
         });
     </script>
@@ -18,12 +24,15 @@
 
 <body>
     <div class="container mt-4">
-        <p>Click the list items to get the index position, relative to its sibling elements</p>
+        <h5>Lấy chỉ mục của phần tử hiện tại trong tập hợp các phần tử được chọn</h5>
+        <p>Click the list items</p>
         <ul>
-            <li>Coffee</li>
-            <li>Milk</li>
-            <li>Soda</li>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
         </ul>
+        <hr>
+        <div id="result"></div>
     </div>
 </body>
 

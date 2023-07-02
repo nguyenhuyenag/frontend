@@ -9,13 +9,13 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
-            let personObj = new Object();
-            personObj.firstname = "John";
-            personObj.lastname = "Doe";
-            personObj.age = 50;
-            personObj.eyecolor = "blue";
+            let obj = {
+                age: 25,
+                name: "John Doe",
+                city: "New York"
+            };
             $("button").click(function () {
-                $(".div1").text($.param(personObj));
+                $(".output").text($.param(obj));
             });
         });
     </script>
@@ -23,8 +23,16 @@
 
 <body>
     <div class="container mt-4">
-        <button>Serialize object</button>
-        <div class="div1"></div>
+        <h4>Chuyển đổi đối tượng JavaScript thành một chuỗi truy vấn URL-encoded.</h4>
+        <pre>
+            let obj = {
+                name: "John Doe",
+                age: 25,
+                city: "New York"
+            };
+        </pre>
+        <button>Serialize Object</button>
+        <div class="output"></div>
     </div>
 </body>
 

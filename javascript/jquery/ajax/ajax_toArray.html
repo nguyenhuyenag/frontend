@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <title>JQuery</title>
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <script>
         $(function () {
-            let x = $("li").toArray();
-            for (let i = 0; i < x.length; i++) {
-                alert(x[i].innerHTML);
+            let arr = $("li").toArray();
+            for (let i = 0; i < arr.length; i++) {
+                arr[i] = arr[i].innerHTML;
             }
+            $('pre').text(arr);
         });
     </script>
 </head>
@@ -25,6 +26,9 @@
             <li>Milk</li>
             <li>Soda</li>
         </ul>
+        <hr>
+        <h5>Convert <b>li</b> to array: </h5>
+        <pre class="output"></pre>
     </div>
 </body>
 
