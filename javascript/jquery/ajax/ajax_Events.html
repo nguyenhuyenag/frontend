@@ -12,6 +12,7 @@
         button {
             cursor: pointer;
         }
+
         .ouput {
             list-style-type: decimal;
         }
@@ -47,14 +48,30 @@
                 $("#ouput").append(createText('ajaxError'));
             });
 
-            $("button").click(function () {
-                // $('ul').empty();
+            $("#btn-1").click(function () {
                 $('#ouput, #result').empty();
                 $.getJSON("https://dummyjson.com/products/1", function (data, status) {
                     let json = JSON.stringify(data, undefined, 4);
-                    // console.log(json);
                     $('#result').text(json);
                 });
+            });
+
+            $("#btn-2").click(function () {
+                let result;
+                $('#ouput, #result').empty();
+                $.getJSON("https://app.asana.com/-/api/0.1/workspaces/") //
+                    .done(function (data) {
+                        result = data;
+                    }).fail(function (jqXHR, textStatus, error) {
+                        console.log(jqXHR);
+                        console.log(textStatus);
+                        console.log(error);
+                        result = jqXHR.responseText;
+                    }).always(function () {
+                        // Handle completion (success or error)
+                        let json = JSON.stringify(result, undefined, 4);
+                        $('#result').text(json);
+                    });
             });
         });
     </script>
@@ -71,9 +88,9 @@
         <hr>
 
         <div class="text-center">
-            <button>Ajax Events</button>
+            <button id='btn-1'>Ajax Events</button>
+            <button id='btn-2'>Ajax Error</button>
         </div>
-        <hr>
         <div id="wait"
             style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
             <img src='https://www.w3schools.com/jquery/demo_wait.gif' width="64" height="64" />
