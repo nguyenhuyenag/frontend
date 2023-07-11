@@ -1,0 +1,16 @@
+
+- Override bootstrap container width
+
+	- https://stackoverflow.com/a/22996746
+
+	@media (min-width: 768px){
+  		.container{
+    		max-width: 85%;
+  		}  
+	}
+	@media (min-width: 992px){
+		.container{
+			max-width: 85%;
+		}
+	}
+	
