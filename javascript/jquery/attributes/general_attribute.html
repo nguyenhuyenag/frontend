@@ -60,21 +60,21 @@
         <pre>
             Get thuộc tính: $(selector).attr(attributeName);
             Set thuộc tính: $(selector).attr(attributeName, value);
+            let hrefValue = $('a').attr('href');
         </pre>
         <b>Ví dụ 1:</b> Lấy thuộc tính 'href' của thẻ 'a':
         <button id="btn1">Get Attr</button>
         <br>
         <a id="_a" href="https://code.jquery.com/jquery-3.6.0.min.js">JQuery 3.6.0</a>
         <pre id="output"></pre>
-        
         <hr>
 
         <h4>prop()</h4>
         <pre>
-            $(selector).prop(property, function(index,currentvalue))
-            $(selector).prop({property:value, property:value,...})
+            Get => $(selector).prop(property);
+            Get => $(selector).prop(property, function(index,currentvalue));
+            Set => $(selector).prop({property:value, property:value,...});
         </pre>
-
         <hr>
         
         <h4>val()</h4>
@@ -83,7 +83,6 @@
         <button id="btn4">Set val()</button>
         <input id="ip1" value="jquery">
         <pre id="output3"></pre>
-
         <hr>
 
         <h4>Phân biệt giữa attr và prop</h4>

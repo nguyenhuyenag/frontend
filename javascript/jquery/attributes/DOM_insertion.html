@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Insertion</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+
+        h4::before {
+            color: brown;
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('.append').click(function() {
+                $(".inner").append("<strong>Hello</strong>");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>append()</h4>
+        <p>Thêm nội dung vào cuối các phần tử được chọn</p>
+        <pre>
+            $(selector).append(content);
+            Nội dung có thể là một chuỗi HTML, một phần tử HTML hoặc một đối tượng jQuery
+        </pre>
+        <button class="append">Append</button>
+        <div class="inner">Hello</div>
+    </div>
+</body>
+
+</html>
