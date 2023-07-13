@@ -24,8 +24,8 @@
     </style>
     <script>
         $(function () {
-            $('.append').click(function() {
-                $(".inner").append("<strong>Hello</strong>");
+            $('.append').click(function () {
+                $('#myList').append('<li>Item 3</li>');
             });
         });
     </script>
@@ -40,7 +40,11 @@
             Nội dung có thể là một chuỗi HTML, một phần tử HTML hoặc một đối tượng jQuery
         </pre>
         <button class="append">Append</button>
-        <div class="inner">Hello</div>
+        <ul id="myList">
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+        <hr>
     </div>
 </body>
 
