@@ -27,24 +27,57 @@
             $('.append').click(function () {
                 $('#myList').append('<li>Item 3</li>');
             });
+
+            // html
+            $('.html').click(function () {
+                let val = $("div.demo-container").html();
+                $('.output2').text(val);
+            });
+            $('.htmlString').click(function () {
+                $(".output2").html('This <button name="nada">button</button> does nothing');
+            });
+
+            // text
+            $('.text').click(function () {
+                $(".output3").text("<b>Some</b> new text.");
+            });
         });
     </script>
 </head>
 
 <body>
     <div class="container mt-4">
-        <h4>append()</h4>
+        <h4>append() & appendTo</h4>
         <p>Thêm nội dung vào cuối các phần tử được chọn</p>
         <pre>
-            $(selector).append(content);
+            $(target).append(content);
+            $(content).appendTo(target);
             Nội dung có thể là một chuỗi HTML, một phần tử HTML hoặc một đối tượng jQuery
         </pre>
-        <button class="append">Append</button>
+        <button class="append">append</button>
         <ul id="myList">
             <li>Item 1</li>
             <li>Item 2</li>
         </ul>
+        <p>Tương tự có <strong>prepend(), prependTo()</strong></p>
         <hr>
+        <h4>html()</h4>
+        <p>Truy xuất hoặc thiết lập nội dung HTML cho phần tử đã chọn</p>
+        <pre>
+            ('#myElement').html();
+            ('#myElement').html('htmlString');
+        </pre>
+        <button class="html">html()</button>
+        <br>
+        <button class="htmlString">html(htmlString)</button>
+        <div class="demo-container">
+            <div class="demo-box">Demonstration Box</div>
+        </div>
+        <p class='output2'></p>
+        <hr>
+        <h4>text()</h4>
+        <button class="text">text()</button>
+        <p class='output3'></p>
     </div>
 </body>
 
