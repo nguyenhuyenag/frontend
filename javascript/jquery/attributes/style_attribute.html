@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Class Attribute</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+        .box {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>addClass()</h4>
+        <div class="box" style="background-color: blue;"></div>
+        <div class="box" style="background-color: rgb(15, 99, 30);"></div>
+        <div class="box" style="background-color: #123456;"></div>
+        <div class="box" style="background-color: #f11;"></div>
+        <br>
+        <span id="result">&nbsp;</span>
+        <script>
+            $(".box").on("click", function () {
+                let color = $(this).css("background-color");
+                $("#result").html("That div is <span style='color:" + color + ";'>" + color + "</span>.");
+            });
+        </script>
+    </div>
+</body>
+
+</html>
