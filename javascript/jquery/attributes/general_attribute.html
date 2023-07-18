@@ -11,13 +11,13 @@
         body {
             counter-reset: section;
         }
-
         h4::before {
-            color: brown;
             counter-increment: section;
             content: counter(section) ") ";
         }
-
+        h4 {
+            color: brown;
+        }
         button {
             cursor: pointer;
         }
@@ -28,35 +28,44 @@
                 let x = $('a').attr('href');
                 $('#output').text(x);
             });
+
             $("#btn2").click(function () {
                 let x = $('#_a').prop();
                 $('#output2').text(x);
             });
+            
             $("#btn3").click(function () {
                 let x = $('#ip1').val();
                 $('#output3').text(x);
             });
+            
             $("#btn4").click(function () {
                 let x = $('#ip1').val('Javascript');
             });
+            
             $("#check1").on("change", function () {
                 let $input = $(this);
                 $("#p2").html(".attr('checked'): <b>" + $input.attr("checked")  + "</b><br>" //
                 + ".prop('checked'): <b>" + $input.prop("checked") + "</b><br>" //
                 + ".is(':checked'): <b>" + $input.is(":checked") + "</b>");
             }).trigger("change");
+            
             $("#ip3").on("change", function () {
                 let $input = $(this);
                 $("#p3").html(".attr('value'): <b>" + $input.attr('value')  + "</b><br>" //
                 + ".prop('value'): <b>" + $input.prop("value") + "</b><br>");
             }).trigger("change");
+
+            $(".removeAttr").on("click", function () {
+                $('.imgRemoveAttr').removeAttr('src');
+            });
         });
     </script>
 </head>
 
 <body>
     <div class="container mt-4">
-        <h4>attr() & removeAttr</h4>
+        <h4>attr()</h4>
         <pre>
             Get thuộc tính: $(selector).attr(attributeName);
             Set thuộc tính: $(selector).attr(attributeName, value);
@@ -68,6 +77,15 @@
         <a id="_a" href="https://code.jquery.com/jquery-3.6.0.min.js">JQuery 3.6.0</a>
         <pre id="output"></pre>
         <hr>
+
+        <h4>removeAttr()</h4>
+        <p>Xóa thuộc tính khỏi các phần tử đã chọn</p>
+        <pre>
+            $(selector).removeAttr(attributeName);
+        </pre>
+        <button class="removeAttr">removeAttr('src')</button>
+        <br>
+        <img class="imgRemoveAttr" src='https://www.w3schools.com/jquery/demo_wait.gif' width="64" height="64" />
 
         <h4>prop()</h4>
         <pre>
@@ -87,7 +105,7 @@
 
         <h4>Phân biệt giữa attr và prop</h4>
         <ul>
-            <li>Cả <b>.attr()</b> và <b>prop()</b> được sử dụng để lấy hoặc gán giá trị của thuộc tính được chỉ định, nhưng <code>.attr()</code> trả về <em>giá trị mặc định</em> (original state) của một thuộc tính trong khi <code>.prop()</code> trả về <em>giá trị hiện tại</em> (current state).</li>
+            <li>Cả <b>.attr()</b> và <b>prop()</b> đều được sử dụng để lấy hoặc gán giá trị của thuộc tính được chỉ định, nhưng <code>.attr()</code> trả về <em>giá trị mặc định</em> (original state) còn <code>.prop()</code> trả về <em>giá trị hiện tại</em> (current state).</li>
             <li><b>.attr()</b> thay đổi thuộc tính cho thẻ HTML đó (HTML Attributes)</li>
             <li><b>.prop()</b> thay đổi các thuộc tính cho thẻ HTML đó theo cây DOM. (DOM properties)</li>
         </ul>
