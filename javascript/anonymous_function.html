@@ -2,27 +2,32 @@
 <html lagueage='vi'>
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	<title>Anonymous function</title>
+	<link rel="shortcut icon" href="#">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
 </head>
 
 <body>
-    <script>
-		// Tạo ra một hàm vô danh (anonymous function) và thực thi ngay lập tức 
-        (function () {
-            console.log("I'm anonymous function");
-        })();
-		const result = (function () {
-		  // Mã bên trong IIFE
-		  console.log("This is a IIFE!");
-		  
-		  // Trả về một hàm
-		  return function () {
-			console.log("This is a function return from IIFE!");
-		  };
+	<div class="container mt-4">
+		<h3>Tạo ra một hàm vô danh (anonymous function) và thực thi ngay lập tức</h3>
+		<ul class="output"></ul>
+	</div>
+	<script>
+		// Hàm không tên
+		(function () {
+			$('.output').append("<li>I'm 1st</li>");
 		})();
-		// Đóng mở và chạy
-		result();
-    </script>
+		// Gán tên hàm
+		const result = (function () {
+			$('.output').append("<li>I'm 2nd</li>");
+			// Trả về một hàm
+			return function () {
+				$('.output').append("<li>I'm 3rd</li>");
+			};
+		})();
+		result(); // Đóng/mở và chạy
+	</script>
 </body>
 
 </html>
