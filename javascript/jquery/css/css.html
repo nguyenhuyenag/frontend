@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Class Attribute</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+        .box {
+            display: inline-block;
+            width: 70px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>Get css() attribute</h4>
+        <pre>
+            $(selector).css("background-color");
+        </pre>
+        <div class="box" style="height: 50px; background-color: blue;"></div>
+        <div class="box" style="height: 60px; background-color: rgb(15, 99, 30);"></div>
+        <div class="box" style="height: 70px; background-color: #123456;"></div>
+        <div class="box" style="height: 80px; background-color: #f11;"></div>
+        <br>
+        <span id="result"></span>
+
+        <h4>Set a CSS Property</h4>
+        <pre>
+            $("p").css("background-color", "yellow");
+            $("p").css({"background-color": "yellow", "font-size": "200%"});
+        </pre>
+        <script>
+            $(".box").on("click", function () {
+                let html = ["The clicked div has the following styles:"];
+                let styleProps = $(this).css(["width", "height", "color", "background-color"]);
+                $.each(styleProps, function (prop, value) {
+                    html.push(prop + ": " + value);
+                });
+                $("#result").html(html.join("<br>"));
+            });
+        </script>
+    </div>
+</body>
+
+</html>
