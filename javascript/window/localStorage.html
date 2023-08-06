@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>localStorage</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h3::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h3 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h3>localStorage</h3>
+        <p>Dữ liệu trong localStorage <strong>không</strong> mất trong các trường hợp sau:</p>
+        <ul>
+            <li>Đóng và mở trình duyệt</li>
+            <li>Khởi động lại trình duyệt</li>
+            <li>Tắt máy tính và khởi động lại</li>
+            <li>Lướt qua các trang web khác nhau</li>
+        </ul>
+        <p>Dữ liệu trong localStorage chỉ <strong>bị mất</strong> trong hai trường hợp sau:</p>
+
+        <ul>
+            <li>Xóa dữ liệu bằng: localStorage.removeItem(key) hoặc localStorage.clear() để xóa toàn bộ dữ liệu</li>
+            <li>Thời gian hết hạn (expiration time)</li>
+        </ul>
+        <h3>Ví dụ về expiration time (<a target="_blank" href="https://www.sohamkamani.com/javascript/localstorage-with-ttl-expiry/">link</a>)</h3>
+        <pre>
+            // Hàm để lưu dữ liệu vào localStorage với thời gian hết hạn
+            function setLocalStorageWithExpiration(key, value, expirationInMinutes) {
+                const now = new Date();
+                const expirationTime = new Date(now.getTime() + expirationInMinutes * 60 * 1000);
+                const item = {
+                    value: value,
+                    expirationTime: expirationTime.getTime(),
+                };
+                localStorage.setItem(key, JSON.stringify(item));
+            }
+
+            // Hàm để lấy dữ liệu từ localStorage và kiểm tra thời gian hết hạn
+            function getLocalStorageWithExpiration(key) {
+                const item = JSON.parse(localStorage.getItem(key));
+                if (!item || new Date().getTime() > item.expirationTime) {
+                    localStorage.removeItem(key);
+                    return null; // Dữ liệu đã hết hạn hoặc không tồn tại, trả về null
+                }
+                return item.value;
+            }
+
+            // Lưu dữ liệu vào localStorage với thời gian hết hạn là 5 phút
+            setLocalStorageWithExpiration('username', 'john_doe', 5);
+
+            // Lấy dữ liệu từ localStorage và kiểm tra thời gian hết hạn
+            var username = getLocalStorageWithExpiration('username');
+            if (username) {
+                console.log('Welcome back, ' + username);
+            } else {
+                console.log('Username has expired or not set.');
+            }
+        </pre>
+    </div>
+</body>
+
+</html>
