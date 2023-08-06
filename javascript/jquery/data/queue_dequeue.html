@@ -90,6 +90,18 @@
             Hàm clearQueue() là một phương thức được sử dụng để xóa toàn bộ các hành động (actions) trong hàng đợi
             (queue) của một hoặc nhiều phần tử
         </p>
+        <p>
+            <b>Lưu ý:</b> Việc xóa hàng đợi sẽ không ngừng các hành động đang được thực thi ngay lập tức. Nó chỉ ngừng thêm
+            các hành động mới vào hàng đợi. Nếu muốn dừng ngay lập tức các hành động đang thực thi và xóa toàn bộ hàng
+            đợi, ta có thể sử dụng <b>stop()</b> sau khi gọi <b>clearQueue()</b>
+        </p>
+
+        <pre>
+            $('#myElement').clearQueue().stop();
+        </pre>
+
+        Khi gọi <b>stop()</b> sau <b>clearQueue()</b>, nó sẽ dừng ngay lập tức các hành động đang thực thi và xóa toàn bộ hàng
+        đợi.
         <pre>
             // Cú pháp
             $(element).clearQueue([queueName]);
