@@ -68,7 +68,14 @@
     <div class="container mt-4 mb-4">
         <h4>Basic</h4>
         <pre>
-            $(selector).animate({params}, speed, callback);
+            $(selector).animate({
+                properties: values, // các thuộc tính CSS muốn thay đổi
+                duration: duration,
+                easing: easing,
+                step: step,
+                complete: complete,
+                queue: queue
+            });
         </pre>
         <button class="btn1">Start Animation 1</button>
         <br><br>

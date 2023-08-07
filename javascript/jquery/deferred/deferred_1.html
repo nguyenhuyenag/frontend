@@ -8,35 +8,38 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <script>
+        function addLog(content) {
+            $("#logEntry").append($("<li/>").html(content));
+        }
+
         $(function () {
-            var $logger = $("#logEntry");
-
-            function addLog(content) {
-                $logger.append($("<li/>").html(content));
-            }
-
-            var newPromise = $.Deferred();
+            let newPromise = $.Deferred();
+            
+            $.when(newPromise).done(function () {
+                addLog("$when().done 1st");
+            });
 
             $.when(newPromise).done(function () {
-                addLog("1st $when().done!");
+                addLog("$when().done 2nd");
             });
 
             newPromise.then(function () {
-                addLog("then 1st");
-            }).always(function () {
-                addLog("always 1st ");
-            }).done(function () {
-                addLog("done 1st ");
-            }).done(function () {
-                addLog("done 2nd ");
-            }).always(function () {
-                addLog("always 2nd");
-            }).then(function () {
-                addLog("then 2nd");
-            });
-
-            $.when(newPromise).done(function () {
-                addLog("2nd $when().done!");
+                addLog("Then() 1st");
+            })
+            .always(function () {
+                addLog("Always() 1st");
+            })
+            .done(function () {
+                addLog("Done() 1st");
+            })
+            .done(function () {
+                addLog("Done() 2nd");
+            })
+            .always(function () {
+                addLog("Always() 2nd");
+            })
+            .then(function () {
+                addLog("Then() 2nd");
             });
 
             addLog("Call method");

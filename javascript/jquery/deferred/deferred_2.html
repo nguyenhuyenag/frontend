@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Deferred</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1>Deferred</h1>
+        <button class="btn btn-primary" onClick="window.location.reload();">Refresh</button>
+        <ul id="status-list"></ul>
+        <ul id="resultList"></ul>
+        <script>
+            function appendStatus(status) {
+                // Tạo một phần tử <li> mới
+                var li = $('<li>').text(status);
+                // Thêm phần tử <li> vào danh sách
+                $('#status-list').append(li);
+            }
+
+            $(function () {
+                // Tạo một Deferred object
+                var deferred = $.Deferred();
+
+                // Mô phỏng một tác vụ bất đồng bộ (setTimeout)
+                setTimeout(function () {
+                    const dt = new Date();
+                    if (dt.getMilliseconds() % 2 == 0) {
+                        // Giả sử tác vụ thành công và trả về kết quả là "Success"
+                        let result = "Success";
+                        // Hoàn thành Deferred object và gọi các hàm xử lý thành công (done)
+                        deferred.resolve(result);
+                    } else {
+                        let result = "Error occurred"; // Tạo một thông báo lỗi
+                        // Từ chối Deferred object và gọi các hàm xử lý thất bại (fail)
+                        deferred.reject(result);
+                    }
+                }, 1000);
+
+                $('#state').text(deferred.state());
+
+                // Gắn kết hàm xử lý cho thành công (done)
+                deferred.done(function (result) {
+                    addToResultList("Done: Tác vụ đã hoàn thành với kết quả: " + result);
+                    appendStatus('Done: Deferred object ở trạng thái: ' + deferred.state());
+                });
+
+                // Gắn kết hàm xử lý cho thất bại (fail)
+                deferred.fail(function (error) {
+                    addToResultList("Fail: Tác vụ thất bại với lỗi: " + error);
+                    appendStatus('Fail: Deferred object ở trạng thái: ' + deferred.state());
+                });
+
+                // Gắn kết hàm xử lý cho hoàn thành hoặc thất bại (always)
+                deferred.always(function () {
+                    addToResultList("Always: Hành động sau khi tác vụ hoàn thành hoặc thất bại");
+                    appendStatus('Always: Deferred object ở trạng thái: ' + deferred.state());
+                });
+
+                // Sử dụng phương thức .catch() để xử lý khi Deferred object bị từ chối (rejected)
+                deferred.catch(function(error) {
+                    appendStatus('Catch: Deferred object ở trạng thái: ' + deferred.state());
+                });
+
+                // Gắn kết hàm xử lý cho cả thành công và thất bại (then)
+                deferred.then(
+                    (result) => {
+                        addToResultList("Then: Tác vụ đã hoàn thành với kết quả: " + result);
+                        appendStatus('Then: Deferred object ở trạng thái: ' + deferred.state());
+                    }, (error) => {
+                        addToResultList("Then: Tác vụ thất bại với lỗi: " + error);
+                        appendStatus('Then: Deferred object ở trạng thái: ' + deferred.state());
+                    }
+                );
+            });
+
+            // Hàm thêm thông báo vào danh sách (<ul>)
+            function addToResultList(message) {
+                $('#resultList').append('<li>' + message + '</li>');
+            }
+        </script>
+    </div>
+</body>
+
+</html>
