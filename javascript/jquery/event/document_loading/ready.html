@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ready</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+
+        h4 {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>$.ready</h4>
+        <p>
+            Hàm <b>$.ready</b> là một hàm trong jQuery cho phép bạn chạy mã khi trang HTML đã tải xong. Hàm này nhận một hàm
+            làm đối số, và hàm đó sẽ được chạy khi trang đã tải xong.
+        </p>
+        <pre>
+            // Ví dụ 1
+            $.when( $.ready ).then(function() {
+                // Document is ready.
+            });
+            
+            // Ví dụ 2
+            $.when(
+                $.getJSON("ajax/test.json"),
+                $.ready
+            ).done(function(data) {
+                // Document is ready.
+                // Value of test.json is passed as `data`
+            });
+        </pre>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HoldReady</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>HoldReady</h4>
+        <p>Phương thức <b>holdReady()</b> được sử dụng để trì hoãn việc thực thi sự kiện <b>document.ready</b> cho đến
+            khi mã lệnh gọi <b>jQuery.ready(true)</b></p>
+        <h4>Ví dụ</h4>
+        <pre>
+            // Giữ lại sự kiện ready
+            jQuery.holdReady(true);
+
+            // Giả lập một tác vụ không đồng bộ mất một khoảng thời gian để hoàn tất
+            setTimeout(function() {
+                console.log("Tác vụ không đồng bộ đã hoàn tất!");
+                // Phóng thích sự kiện ready sau khi tác vụ không đồng bộ hoàn tất
+                jQuery.holdReady(false);
+            }, 3000);
+
+            // Mã lệnh sau sẽ chạy khi tài liệu sẵn sàng
+            $(document).ready(function() {
+                console.log("Tài liệu đã sẵn sàng!");
+            });
+        </pre>
+        <h4>Ví dụ</h4>
+        <pre>
+            $(document).ready(function() {
+                $.holdReady(true);
+                // Load the additional script
+                $.getScript("script.js", function() {
+                  // Now that the script has loaded, execute our code
+                  alert("The script has loaded!");
+              
+                  // Release the hold on the ready event
+                  $.holdReady(false);
+                });
+              });
+        </pre>
+    </div>
+</body>
+
+</html>
