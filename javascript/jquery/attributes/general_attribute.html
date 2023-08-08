@@ -54,7 +54,18 @@
 </head>
 
 <body>
-    <div class="container mt-4">
+    <div class="container mt-4 mb-4">
+        <h4>val()</h4>
+        <p>Get hoặc set giá trị của các phần tử đầu vào: <b>input, select, textarea,...</b></p>
+        <button id="btn3">Get val()</button>
+        <button id="btn4">Set val()</button>
+        <input id="ip1" value="jquery">
+        <pre id="output3"></pre>
+        <hr>
+
+        <h4>text()</h4>
+        <p>Get hoặc set giá trị của các phần tử đầu vào: <b>p, div, span,...</b></p>
+
         <h4>attr()</h4>
         <pre>
             Get thuộc tính: $(selector).attr(attributeName);
@@ -68,15 +79,6 @@
         <pre id="output"></pre>
         <hr>
 
-        <h4>removeAttr()</h4>
-        <p>Xóa thuộc tính khỏi các phần tử đã chọn</p>
-        <pre>
-            $(selector).removeAttr(attributeName);
-        </pre>
-        <button class="removeAttr">removeAttr('src')</button>
-        <br>
-        <img class="imgRemoveAttr" src='https://www.w3schools.com/jquery/demo_wait.gif' width="64" height="64" />
-
         <h4>prop()</h4>
         <pre>
             Get => $(selector).prop(property);
@@ -84,17 +86,6 @@
             Set => $(selector).prop({property:value, property:value,...});
         </pre>
         <hr>
-
-        <h4>val()</h4>
-        <p>Get hoặc set giá trị của các phần tử đầu vào: <b>input, select, textarea,...</b></p>
-        <button id="btn3">Get val()</button>
-        <button id="btn4">Set val()</button>
-        <input id="ip1" value="jquery">
-        <pre id="output3"></pre>
-        <hr>
-
-        <h4>text()</h4>
-        <p>Get hoặc set giá trị của các phần tử đầu vào: <b>p, div, span,...</b></p>
 
         <h4>Khác biệt giữa attr() và prop()</h4>
         <ul>
@@ -131,6 +122,15 @@
                 );
             }).trigger("change");
         </script>
+
+        <h4>removeAttr()</h4>
+        <p>Xóa thuộc tính khỏi các phần tử đã chọn</p>
+        <pre>
+            $(selector).removeAttr(attributeName);
+        </pre>
+        <button class="removeAttr">removeAttr('src')</button>
+        <br>
+        <img class="imgRemoveAttr" src='https://www.w3schools.com/jquery/demo_wait.gif' width="64" height="64" />
     </div>
 </body>
 

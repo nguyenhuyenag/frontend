@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trigger</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+
+        h4 {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>Trigger</h4>
+        <p>
+            Hàm <b>trigger()</b> được dùng để kích hoạt một sự kiện trên một phần tử đã chọn hoặc gọi một hàm xử lý sự
+            kiện đã được đăng ký cho phần tử đó. Nó giả lập việc người dùng thực hiện một sự kiện trên phần tử, dẫn đến
+            việc gọi hàm xử lý sự kiện mà bạn đã đăng ký.
+        </p>
+        <h4>Ví dụ</h4>
+        <input id="check1" type="checkbox" checked="checked">
+        <label for="check1">Check me</label>
+        <p id="ouput"></p>
+        <script>
+            $("input").on("change", function () {
+                $("#ouput").html("Value: <b>" + $(this).prop("checked"));
+            }).trigger("change");
+        </script>
+
+        <h4>Ví dụ</h4>
+        <button id="old">.trigger("focus")</button>
+        <button id="new">.triggerHandler("focus")</button>
+        <br><br>
+        <input type="text" value="To Be Focused">
+        <script>
+            $("#old").on("click", function () {
+                $("input").trigger("focus");
+            });
+            $("#new").on("click", function () {
+                $("input").triggerHandler("focus");
+            });
+            $("input").on("focus", function () {
+                $("<span>Focused!</span>").appendTo("body").fadeOut(1000);
+            });
+        </script>
+    </div>
+</body>
+
+</html>
