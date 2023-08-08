@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Off</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+
+        h4 {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>Off</h4>
+        <p>
+            Hàm <b>off()</b> trong được sử dụng để gỡ bỏ các trình xử lý sự kiện đã được gắn vào các phần tử DOM bằng
+            phương thức <b>on()</b>
+        </p>
+        <p>
+            Nếu không cung cấp các tham số <b>eventType, childSelector, handler</b>, phương thức <b>off()</b> sẽ gỡ bỏ tất cả
+            các trình xử lý sự kiện đã được gắn vào phần tử thông qua phương thức <b>on()</b>
+        </p>
+        <pre>
+            $(selector).off([eventType], [childSelector], [handler]);
+        </pre>
+    </div>
+</body>
+
+</html>

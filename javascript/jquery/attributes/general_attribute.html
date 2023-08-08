@@ -11,13 +11,16 @@
         body {
             counter-reset: section;
         }
+
         h4::before {
             counter-increment: section;
             content: counter(section) ") ";
         }
+
         h4 {
             color: brown;
         }
+
         button {
             cursor: pointer;
         }
@@ -33,28 +36,15 @@
                 let x = $('#_a').prop();
                 $('#output2').text(x);
             });
-            
+
             $("#btn3").click(function () {
                 let x = $('#ip1').val();
                 $('#output3').text(x);
             });
-            
+
             $("#btn4").click(function () {
                 let x = $('#ip1').val('Javascript');
             });
-            
-            $("#check1").on("change", function () {
-                let $input = $(this);
-                $("#p2").html(".attr('checked'): <b>" + $input.attr("checked")  + "</b><br>" //
-                + ".prop('checked'): <b>" + $input.prop("checked") + "</b><br>" //
-                + ".is(':checked'): <b>" + $input.is(":checked") + "</b>");
-            }).trigger("change");
-            
-            $("#ip3").on("change", function () {
-                let $input = $(this);
-                $("#p3").html(".attr('value'): <b>" + $input.attr('value')  + "</b><br>" //
-                + ".prop('value'): <b>" + $input.prop("value") + "</b><br>");
-            }).trigger("change");
 
             $(".removeAttr").on("click", function () {
                 $('.imgRemoveAttr').removeAttr('src');
@@ -94,27 +84,53 @@
             Set => $(selector).prop({property:value, property:value,...});
         </pre>
         <hr>
-        
+
         <h4>val()</h4>
-        <p>Get hoặc set giá trị của các phần tử đầu vào: <b>input, select, textarea</b></p>
+        <p>Get hoặc set giá trị của các phần tử đầu vào: <b>input, select, textarea,...</b></p>
         <button id="btn3">Get val()</button>
         <button id="btn4">Set val()</button>
         <input id="ip1" value="jquery">
         <pre id="output3"></pre>
         <hr>
 
+        <h4>text()</h4>
+        <p>Get hoặc set giá trị của các phần tử đầu vào: <b>p, div, span,...</b></p>
+
         <h4>Khác biệt giữa attr() và prop()</h4>
         <ul>
-            <li>Cả 2 đều được sử dụng để lấy hoặc gán giá trị của thuộc tính được chỉ định, nhưng <code>.attr()</code> trả về <em>giá trị mặc định</em> (original state) còn <code>.prop()</code> trả về <em>giá trị hiện tại</em> (current state).</li>
+            <li>Cả 2 đều được sử dụng để lấy hoặc gán giá trị của thuộc tính được chỉ định, nhưng <code>.attr()</code>
+                trả về <em>giá trị mặc định</em> (original state) còn <code>.prop()</code> trả về <em>giá trị hiện
+                    tại</em> (current state).</li>
             <li><b>.attr()</b> thay đổi thuộc tính cho thẻ HTML đó (HTML Attributes)</li>
             <li><b>.prop()</b> thay đổi các thuộc tính cho thẻ HTML đó theo cây DOM. (DOM properties)</li>
         </ul>
+
         <b>Ví dụ 2:</b>
         <input id="check1" type="checkbox" checked="checked">
         <label for="check1">Check me</label>
         <p id="p2"></p>
+        <script>
+            $("#check1").on("change", function () {
+                let $input = $(this);
+                $("#p2").html(
+                    ".is(':checked'): <b>" + $input.is(":checked") + "</b><br>" //
+                    + ".prop('checked'): <b>" + $input.prop("checked") + "</b><br>" //
+                    + ".attr('checked'): <b>" + $input.attr("checked") + "</b><br>" //
+                );
+            }).trigger("change");
+        </script>
+
         <b>Ví dụ 3:</b> <input id="ip3" value="Type here">
         <p id="p3"></p>
+        <script>
+            $("#ip3").on("change", function () {
+                let $input = $(this);
+                $("#p3").html(
+                    ".attr('value'): <b>" + $input.attr('value') + "</b><br>" //
+                    + ".prop('value'): <b>" + $input.prop("value") + "</b><br>"
+                );
+            }).trigger("change");
+        </script>
     </div>
 </body>
 

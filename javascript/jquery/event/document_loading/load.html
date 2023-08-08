@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Load</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+
+        h4 {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>Load</h4>
+        <p>Bắt sự kiện khi một phần tử đã được tải hoàn tất. Ví dụ: "img", "iframe",...</p>
+        <pre>
+            $(selector).on("load", function() {
+                // Xử lý khi phần tử được tải hoàn tất
+            });
+
+            // Ví dụ
+            $("#myImage").on("load", function() {
+                // Xử lý khi hình ảnh đã tải hoàn tất
+                console.log("Hình ảnh đã tải hoàn tất!");
+            });
+        </pre>
+        <h4>Window on Load</h4>
+        <pre>
+            // Bắt sự kiện khi toàn bộ trang web đã tải hoàn tất: Hình ảnh, tệp đa phương tiện và các tài nguyên khác
+            $(window).on("load", function() {
+
+            });
+        </pre>
+        <h4>Unload</h4>
+        <p>Sự kiện unload được kích hoạt khi:</p>
+        <ul>
+            <li>Window được đóng.</li>
+            <li>Refresh lại trang.</li>
+            <li>Click vào link tới trang khác.</li>
+            <li>Chạy một URL từ thanh address.</li>
+            <li>Click vào button next hay previous</li>
+        </ul>
+        <pre>
+            $(window).on("unload", function () {
+                console.log("Reload trang");
+            });
+        </pre>
+    </div>
+</body>
+
+</html>

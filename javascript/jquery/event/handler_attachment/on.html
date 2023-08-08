@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>On</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        .intro {
+            font-size: 150%;
+            color: red;
+        }
+        #myList {
+            display: flex;
+            flex-direction: column;
+            gap: 5px; /* Khoảng cách giữa các button */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>On</h4>
+        <pre>
+            $(selector).on(eventType, [childSelector], [data], handler);
+        </pre>
+        
+        <p>Trong đó <b>eventType</b> là các sự kiện:</p>
+        <h6>Sự kiện chuột (Mouse events):</h6>
+        <ul>
+            <li><strong>click:</strong></li>
+            <li><strong>dblclick:</strong></li>
+            <li><strong>mouseover:</strong> Khi con trỏ chuột đi vào phần tử</li>
+            <li><strong>mouseout:</strong> Khi con trỏ chuột rời khỏi phần tử</li>
+            <li><strong>mousemove:</strong> Khi con trỏ chuột di chuyển trong phạm vi phần tử</li>
+            <li><strong>mousedown:</strong> Nhấn chuột trái xuống</li>
+            <li><strong>mouseup:</strong> Thả chuột trái ra</li>
+        </ul>
+
+        <h6>Sự kiện bàn phím (Keyboard events):</h6>
+        <ul>
+            <li><strong>keydown:</strong> Nhấn một phím trên bàn phím</li>
+            <li><strong>keyup:</strong> Nhả một phím đã được nhấn</li>
+        </ul>
+
+        <h6>Sự kiện hộp thoại (Form events):</h6>
+        <ul>
+            <li><strong>submit:</strong></li>
+            <li><strong>focus:</strong> Khi một phần tử nhận focus</li>
+            <li><strong>blur:</strong> Khi một phần tử mất focus</li>
+            <li><strong>change:</strong> Khi phần tử nhập liệu thay đổi (<b>input, select, textarea,...</b>)
+            </li>
+            <li><strong>input:</strong> Khi giá trị của một phần tử nhập liệu thay đổi (chỉ hỗ trợ từ phiên bản jQuery 3.0)</li>
+        </ul>
+
+        <h4>Ví dụ (basic)</h4>
+        <pre>
+            // Click
+            $("p").on("click", function() {
+                alert("The paragraph was clicked.");
+            });
+        </pre>
+
+        <h4>Ví dụ (pass along data to the function)</h4>
+        <pre>
+            function handlerName(event) {
+                alert(event.data.msg);
+            }
+            
+            $("p").on("click", {msg: "You just clicked me!"}, handlerName);
+        </pre>
+
+        <h4>Ví dụ (multiple events)</h4>
+        <pre>
+            $("p").on("mouseover mouseout", function() {
+                $(this).toggleClass("intro");
+            });
+        </pre>
+        <p id='ex2'>Move the mouse pointer over this paragraph</p>
+        <script>
+            $(document).ready(function () {
+                $('#ex2').on("mouseover mouseout", function () {
+                    $(this).toggleClass("intro");
+                });
+            });
+        </script>
+
+        <h4>Ví dụ (multiple event handlers using the map parameter)</h4>
+        <pre>
+            $("p").on({
+                mouseover: function(){
+                  $("body").css("background-color", "lightgray");
+                },  
+                mouseout: function(){
+                  $("body").css("background-color", "lightblue");
+                }, 
+                click: function(){
+                  $("body").css("background-color", "yellow");
+                }  
+            });
+        </pre>
+
+        <h4>Ví dụ</h4>
+        <p>Gắn sự kiện <b>click()</b> vào <b>button</b></p>
+        <p id='ouputClick' class="text-danger"></p>
+        <ul id="myList">
+            <li><button class="btn btn-primary">Button 1</button></li>
+            <li><button class="btn btn-primary">Button 2</button></li>
+            <li><button class="btn btn-primary">Button 3</button></li>
+        </ul>
+        <script>
+            $("#myList").on("click", "button", function () {
+                // Xử lý khi nút được click
+                // console.log("Button clicked: " + $(this).text());
+                $('#ouputClick').text($(this).text());
+            });
+        </script>
+    </div>
+</body>
+
+</html>
