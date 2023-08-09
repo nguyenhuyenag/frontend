@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>event.which</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        html {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: #FFCC80;
+            text-align: center;
+            font-family: monospace;
+            line-height: 1.4;
+            font-size: 25px;
+        }
+
+        pre {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        Click in here
+        <br>
+        and press a key.
+    </div>
+    <script>
+        document.onkeypress = function(e) {
+            const key = e.which || e.keyCode;
+            console.log(key);
+        }
+        document.addEventListener("keydown", function(event) {
+            console.log(event);
+            document.body.innerHTML = `
+                <b>key (which): ${event.key}</b>
+                <br>&nbsp;
+                <b>which: ${event.which}</b>
+                <br>&nbsp;
+                <b>keyCode:</b> ${event.keyCode}
+                <br>&nbsp;&nbsp;&nbsp;
+                <b>shiftKey:</b> ${event.shiftKey}
+                </br>&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>altKey:</b> ${event.altKey}
+                <br>&nbsp;&nbsp;&nbsp;
+                <b>ctrlKey:</b> ${event.ctrlKey}
+                <br>&nbsp;&nbsp;
+                <b>metaKey:</b> ${event.metaKey}
+            `;
+        });
+    </script>
+</body>
+
+</html>
