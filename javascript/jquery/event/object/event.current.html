@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Current</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+
+        h4 {
+            color: brown;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>event.current</h4>
+        <ul>
+            <li><b>event.target:</b> Trả về phần tử DOM mà sự kiện đã xảy ra. Thường là phần tử mà ta thực hiện hành
+                động như nhấp chuột, nhập liệu,... Nó có thể khác với phần tử mà ta gắn bộ xử lý sự kiện.
+            </li>
+            <li><b>event.currentTarget:</b> Trả về phần tử DOM mà bộ xử lý sự kiện đang được gắn. Nó thường là phần
+                tử mà ta đã gắn bộ xử lý sự kiện. Dù sự kiện đã xảy ra trên phần tử con, nhưng event.currentTarget
+                sẽ là phần tử mà bạn đã đính kèm bộ xử lý sự kiện.
+            </li>
+        </ul>
+
+        <hr>
+
+        <h4>Ví dụ</h4>
+        <pre>
+            $("#parent").click(function (event) {
+                console.log(event.target.id);           // In ra "child"
+                console.log(event.currentTarget.id);    // In ra "parent" luôn, vì gắn xử lý lên phần tử cha
+            });
+
+            $("#child").click(function (event) {
+                console.log(event.target.id);           // In ra "child" luôn, vì gắn xử lý lên phần tử con
+                console.log(event.currentTarget.id);    // In ra "child" luôn, vì gắn xử lý lên phần tử con
+            });
+        </pre>
+        <div id="parent">
+            <button id="child">Click me</button>
+        </div>
+        <script>
+            $("#parent").click(function (event) {
+                console.log(event.target.id);           // In ra "child" nếu bạn nhấp vào nút
+                console.log(event.currentTarget.id);    // In ra "parent" luôn, vì bạn đã gắn xử lý lên phần tử cha
+            });
+
+            $("#child").click(function (event) {
+                console.log(event.target.id);           // In ra "child" luôn, vì bạn đã gắn xử lý lên phần tử con
+                console.log(event.currentTarget.id);    // In ra "child" luôn, vì bạn đã gắn xử lý lên phần tử con
+            });
+        </script>
+    </div>
+</body>
+
+</html>
