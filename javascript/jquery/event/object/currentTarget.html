@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CurrentTarget</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>currentTarget</h4>
+        <p>Tương đương với <b>this</b></p> đều đề cập đến cùng một phần tử, tức là nút mà sự kiện đã được kích hoạt trên
+        <pre>
+            $(selector).on(eventType, function(event) {
+                alert(event.currentTarget === this); // true
+            });
+        </pre>
+        <h4>Ví dụ</h4>
+        <pre>
+            $(".myButton").on("click", function(event) {
+                var targetElement = event.currentTarget;
+                console.log("Clicked on: " + targetElement.textContent);
+            });
+        </pre>
+    </div>
+</body>
+
+</html>

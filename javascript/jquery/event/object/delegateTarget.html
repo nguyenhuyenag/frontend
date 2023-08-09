@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DelegateTarget</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>DelegateTarget</h4>
+        <p>
+            Khi sử dụng <b>on()</b> để gắn trình xử lý sự kiện vào phần tử cha và xác định một childSelector, khi sự
+            kiện xảy ra trên phần tử con:
+        <ul>
+            <li><b>event.delegateTarget</b> sẽ trỏ đến phần tử cha (phần tử mà bạn đã gắn trình xử lý sự kiện vào)</li>
+            <li><b>event.currentTarget</b> sẽ trỏ đến phần tử con đã kích hoạt sự kiện</li>
+        </ul>
+        </p>
+        <hr>
+        
+        <h4>Ví dụ</h4>
+        <div id='parent'>
+            <button id='btn_1'>Button 1</button>
+            <button id='btn_2'>Button 2</button>
+        </div>
+        <p id='output'></p>
+        <script>
+            $(function () {
+                $("#parent").on("click", "button", function (event) {
+                    $('#output').html(
+                        "<b>delegateTarget:</b> " + event.delegateTarget.id + ", <b>currentTarget:</b> " + event.currentTarget.id
+                    );
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>
