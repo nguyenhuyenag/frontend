@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Default Behavior</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>Default behavior</h4>
+        <p>
+            Hành vi mặc định (default behavior) của sự kiện DOM là hành vi tự nhiên mà một phần tử sẽ
+            thực hiện. Ví dụ hành vi mặc định của một liên kết (thẻ <b>a</b>) khi click vào là chuyển hướng trình duyệt
+            đến URL được chỉ định trong thuộc tính href.
+        </p>
+
+        <h4>event.preventDefault()</h4>
+        <p>
+            Khi gắn một trình xử lý sự kiện vào phần tử, ta có thể sử dụng <b>event.preventDefault()</b> để ngăn hành vi
+            mặc định và thay thế bằng một hành vi tùy chỉnh khác
+        </p>
+
+        <h4>event.isDefaultPrevented()</h4>
+        <p>
+            Phương thức dùng để kiểm tra xem liệu trình xử lý sự kiện đã ngăn mặc định hành vi của sự kiện hay chưa.
+        </p>
+
+        <h4>Ví dụ</h4>
+        <pre>
+            $("a").on("click", function(event) {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+                if (event.isDefaultPrevented()) {
+                    console.log("Default behavior prevented.");
+                } else {
+                    console.log("Default behavior not prevented.");
+                }
+            });
+        </pre>
+
+        <h4>Ví dụ</h4>
+        <p>The preventDefault() method will prevent (ngăn chặn) the link above from following the URL.</p>
+        <a href="https://w3schools.com/">Go to W3Schools.com</a>
+        <script>
+            $(function (event) {
+                $("a").click(function (event) {
+                    event.preventDefault();
+                    // "Was preventDefault() called: " + event.isDefaultPrevented()
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>StopPropagation</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+
+        h4 {
+            color: brown;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>event.stopPropagation</h4>
+        <p>Ngăn chặn sự lan toả của sự kiện lên các phần tử cha của phần tử hiện tại trong cây DOM</p>
+
+        <h4>Ví dụ</h4>
+        <p>
+            Khi bấm vào nút "Click me", cả 2 bộ xử lý sự kiện sẽ được thực thi. Để khắc phục ta cần sử dụng
+            <b>event.stopPropagation()</b> trong bộ xử lý của phần tử con:
+        </p>
+        <div id="parent">
+            <button id="child1">Click me</button>
+            <button id="child2">Click me (stopPropagation)</button>
+        </div>
+        <p id='output'></p>
+        <script>
+            $("#parent").click(function (event) {
+                $('#output').append("Parent clicked!");
+            });
+
+            $("#child1").click(function (event) {
+                $('#output').append("Child clicked!");
+            });
+            
+            $("#child2").click(function (event) {
+                event.stopPropagation();
+                $('#output').append("Child clicked!");
+            });
+        </script>
+    </div>
+</body>
+
+</html>

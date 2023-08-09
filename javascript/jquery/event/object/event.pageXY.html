@@ -3,19 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>JQuery</title>
+    <title>Mousemove</title>
     <link rel="shortcut icon" href="#">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <script>
         $(document).mousemove(function (e) {
-            $("span").text("X: " + e.pageX + ", Y: " + e.pageY);
+            $("span").text(
+                "X: " + e.pageX + ", Y: " + e.pageY
+            );
         });
     </script>
 </head>
 
 <body>
     <div class="container mt-4">
+        <p>Trả về  hoành độ (X) và tung độ (Y) của của con trỏ chuột tại thời điểm hiện tại</p>
         <p>The mouse pointer position is at: <span></span></p>
     </div>
 </body>

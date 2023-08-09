@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DelegateTarget</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>event.result</h4>
+        <p>Truyền dữ liệu giữa các sự kiện được kích hoạt bởi cùng một sự kiện</p>
+        <h4>Ví dụ</h4>
+        <pre>
+            $("button").on("click", function(event) {
+                return "Hello";
+            });
+            $("button").on("click", function(event) {
+                $("p").html(event.result); // Hello
+            });
+        </pre>
+    </div>
+</body>
+
+</html>
