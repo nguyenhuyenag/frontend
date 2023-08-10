@@ -5,8 +5,20 @@
     <meta charset="UTF-8">
     <title>serializeArray</title>
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+    </style>
     <script>
         $(function () {
             $("button").click(function () {
@@ -22,9 +34,13 @@
 
 <body>
     <div class="container mt-4">
+        <h4>serializeArray()</h4>
+        <p>Hàm được dùng để chuyển dữ liệu từ form thành mảng</p>
+
+        <h4>Ví dụ</h4>
         <form action="">
-            First name: <input type="text" name="FirstName" value="Mickey"><br>
-            Last name: <input type="text" name="LastName" value="Mouse"><br>
+            First name: <input type="text" name="firstName" value="Mickey"><br>
+            Last name: <input type="text" name="lastName" value="Mouse"><br>
         </form>
         <button>Serialize form values</button>
         <div id="results"></div>
