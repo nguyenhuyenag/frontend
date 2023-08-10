@@ -111,6 +111,11 @@
                     <td>$("div ~ p")</td>
                     <td>Chọn tất cả các thẻ &lt;p&gt; ngang hàng phía sau &lt;div&gt;</td>
                 </tr>
+                <tr>
+                    <td><a target="_blank" href="https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_sel_pclass">element1.element2</a></td>
+                    <td>$("p.intro")</td>
+                    <td>Chọn tất cả các thẻ &lt;p&gt; có class='intro'</td>
+                </tr>
                 
                 <tr>
                     <td>&nbsp;</td>
@@ -121,22 +126,23 @@
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_eq.asp">:eq(index)</a></td>
                     <td>$("ul li:eq(3)")</td>
-                    <td>The fourth element in a list (index starts at 0)</td>
+                    <td>Chọn phần tử thứ 4 (tính từ 0)</td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_gt.asp">:gt(no)</a></td>
+                    <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_gt.asp">:gt(index)</a></td>
                     <td>$("ul li:gt(3)")</td>
-                    <td>List elements with an index greater than 3</td>
+                    <td>Những &lt;li&gt; có chỉ số &ge; 3 trong &lt;ul&gt;</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_lt.asp">:lt(no)</a></td>
                     <td>$("ul li:lt(3)")</td>
-                    <td>List elements with an index less than 3</td>
+                    <td>Những &lt;li&gt; có chỉ số &le; 3 trong &lt;ul&gt;</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_not.asp">:not(selector)</a></td>
-                    <td>$("input:not(:empty)")</td>
-                    <td>All input elements that are not empty</td>
+                    <!-- <td>$("input:not(:empty)")</td> -->
+                    <td>$("li:not(.highlight)")</td>
+                    <td>Chọn tất cả các &lt;li&gt; không chứa <b>class="highlight"</b></td>
                 </tr>
 
                 <tr>
@@ -148,43 +154,42 @@
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute.asp">[attribute]</a></td>
                     <td>$("[href]")</td>
-                    <td>All elements with a href attribute</td>
+                    <td>Tất cả phần tử có thuộc tính <b>href</b></td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute_equal_value.asp">[attribute=value]</a></td>
                     <td>$("[href='default.htm']")</td>
-                    <td>All elements with a href attribute value equal to "default.htm"</td>
+                    <td>Tất cả phần tử mà <b>href='default.htm'</b></td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute_notequal_value.asp">[attribute!=value]</a></td>
                     <td>$("[href!='default.htm']")</td>
-                    <td>All elements with a href attribute value not equal to "default.htm"</td>
+                    <td>Tất cả phần tử mà giá trị của href <b>khác</b> default.htm</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute_end_value.asp">[attribute$=value]</a></td>
                     <td>$("[href$='.jpg']")</td>
-                    <td>All elements with a href attribute value ending with ".jpg"</td>
+                    <td>Tất cả phần tử mà giá trị của href <b>kết thúc bằng</b> .jpg</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute_prefix_value.asp">[<i>attribute</i>|=<i>value</i>]</a></td>
-                    <td>$("[title|='Tomorrow']")</td>
-                    <td>All elements with a title attribute value equal to 'Tomorrow', or starting
-                        with 'Tomorrow' followed by a hyphen</td>
+                    <td>$("[title|='tomorrow']")</td>
+                    <td>Tất cả phần tử có <b>title='tomorrow'</b>, hoặc có dạng <b>title='tomorrow-</b>XXXX'</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute_beginning_value.asp">[<i>attribute</i>^=<i>value</i>]</a></td>
                     <td>$("[title^='Tom']")</td>
-                    <td>All elements with a title attribute value starting with "Tom"</td>
+                    <td>Tất cả phần từ có title <b>bắt đầu</b> bằng "Tom"</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute_contains_value.asp">[<i>attribute</i>~=<i>value</i>]</a></td>
                     <td>$("[title~='hello']")</td>
-                    <td>All elements with a title attribute value containing the specific word "hello"</td>
+                    <td>Tất cả phần tử mà thuộc tính title <b>chứa</b> 'hello' (độc lập bởi dấu cách, 'helloo' không đúng)</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute_contains_string_value.asp">[<i>attribute*</i>=<i>value</i>]</a></td>
                     <td>$("[title*='hello']")</td>
-                    <td>All elements with a title attribute value containing the word "hello"</td>
+                    <td>Tương tự trên nhưng cả "hello" và "helloo" đều hợp lệ</td>
                 </tr>
 
                 <tr>
@@ -273,22 +278,24 @@
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_firstchild.asp">:first-child</a></td>
                     <td>$("p:first-child")</td>
-                    <td>All &lt;p&gt; elements that are the first child of their parent</td>
+                    <td>Những thẻ &lt;p&gt; mà nó là con đầu tiên (first child) của phần tử nào đó</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_firstoftype.asp">:first-of-type</a></td>
                     <td>$("p:first-of-type")</td>
-                    <td>All &lt;p&gt; elements that are the first &lt;p&gt; element of their parent</td>
+                    <!-- Selects all elements that are the first child, of a particular type, of their parent -->
+                    <td>Những phần mà: Là &lt;p&gt; (vì cùng loại) và là con đầu tiên của một phần từ khác (tương đương :nth-of-type(1))</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_lastchild.asp">:last-child</a></td>
                     <td>$("p:last-child")</td>
-                    <td>All &lt;p&gt; elements that are the last child of their parent</td>
+                    <td>Những thẻ &lt;p&gt; mà nó là con cuối cùng (last child) của phần tử nào đó</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_lastoftype.asp">:last-of-type</a></td>
                     <td>$("p:last-of-type")</td>
-                    <td>All &lt;p&gt; elements that are the last &lt;p&gt; element of their parent</td>
+                    <!-- <td>All &lt;p&gt; elements that are the last &lt;p&gt; element of their parent</td> -->
+                    <td>Những phần mà: Là &lt;p&gt; (vì cùng loại) và là con cuối cùng của một phần từ khác</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_nthchild.asp">:nth-child(n)</a></td>
@@ -347,7 +354,7 @@
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_contains.asp">:contains(text)</a></td>
                     <td>$(":contains('Hello')")</td>
-                    <td>All elements which contains the text "Hello"</td>
+                    <td>Tất cả các phần tử có nội dụng chưa từ "Hello"</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_has.asp">:has(selector)</a></td>
@@ -361,8 +368,8 @@
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_parent.asp">:parent</a></td>
-                    <td>$(":parent")</td>
-                    <td>All elements that are a parent of another element</td>
+                    <td>$("td:parent")</td>
+                    <td>Những &lt;td&gt; có phần từ con (chứa nội dung). Phần tử con có thể là văn bản, HTML, hoặc bất kỳ phần tử nào bên trong</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_hidden.asp">:hidden</a></td>
@@ -377,7 +384,7 @@
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_root.asp">:root</a></td>
                     <td>$(":root")</td>
-                    <td>The document's root element</td>
+                    <td>Chính là thẻ &lt;html&gt;</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_lang.asp">:lang(language)</a></td>
