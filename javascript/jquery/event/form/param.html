@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Param</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>param()</h4>
+        <p>Là hàm được sử dụng để biến đổi một đối tượng JavaScript thành một chuỗi dữ liệu URL được mã hóa</p>
+        <pre>
+            let params = { name: "John", age: 30, city: "New York" };
+            let queryString = decodeURIComponent(jQuery.param(params));
+            console.log(queryString); // name=John&age=30&city=New+York
+        </pre>
+        <h4>Ví dụ</h4>
+        <code id='input'></code>
+        <p id='output'></p>
+        <script>
+            let params = { name: "John", age: 30, city: "New York" };
+            let queryString = $.param(params);
+            $('#input').text(JSON.stringify(params));
+            $('#output').text(queryString);
+        </script>
+    </div>
+</body>
+
+</html>
