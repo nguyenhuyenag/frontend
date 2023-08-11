@@ -55,6 +55,45 @@
             &lt;/div&gt;
         </pre>
 
+        <h4>wrapAll()</h4>
+        <p>Hàm sẽ bọc tất cả các phần tử được chọn bằng 1 phần tử cha</p>
+        <h4>Ví dụ</h4>
+        <pre>
+            // Với
+            &lt;p&gt;This is paragraph 1&lt;/p&gt;
+            &lt;p&gt;This is paragraph 2&lt;/p&gt;
+
+            // Sử dụng
+            $("p").wrapAll("&lt;div class='wrapper'&gt;&lt;/div&gt;");
+
+            // Ta sẽ được
+            &lt;div class="wrapper"&gt;
+                &lt;p&gt;This is paragraph 1.&lt;/p&gt;
+                &lt;p&gt;This is paragraph 2.&lt;/p&gt;
+            &lt;/div&gt;
+        </pre>
+
+        <h4>wrapInner()</h4>
+        <h4>Ví dụ</h4>
+        <pre>
+            // Input
+            &lt;div id=&quot;myDiv&quot;&gt;
+                &lt;p&gt;This is a paragraph.&lt;/p&gt;
+                &lt;button&gt;Click me&lt;/button&gt;
+            &lt;/div&gt;
+
+            // Code
+            $('#myDiv').wrapInner(&quot;&lt;div class='wrapper'&gt;&lt;/div&gt;&quot;);
+
+            // Ouput
+            &lt;div id="myDiv"&gt;
+                &lt;div class="wrapper"&gt;
+                    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+                    &lt;button&gt;Click me&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;        
+        </pre>
+
         <h4>unwrap()</h4>
         <button>wrap/unwrap</button>
         <p id='p1'>Hello</p>
