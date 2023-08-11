@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Keyup</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+
+        h4 {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>keyup()</h4>
+        <p>Bắt sự kiện liên quan đến việc <b>nhả</b> phím</p>
+
+        <h4>Ví dụ</h4>
+        <input type="text" value="some text">
+        <p id='output'></p>
+        <script>
+            $("input").on("keyup", function () {
+                let value = $(this).val();
+                $('#output').text(value);
+            }).trigger("keyup");
+        </script>
+    </div>
+</body>
+
+</html>

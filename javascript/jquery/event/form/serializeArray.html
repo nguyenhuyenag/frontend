@@ -18,14 +18,19 @@
         h4 {
             color: brown;
         }
+        button {
+            cursor: pointer;
+        }
     </style>
     <script>
         $(function () {
             $("button").click(function () {
-                var x = $("form").serializeArray();
-                console.log(x);
-                $.each(x, function (i, field) {
-                    $("#results").append(field.name + ": " + field.value + "<br>");
+                let f = $("form").serializeArray();
+                console.log(f);
+                $.each(f, function (i, field) {
+                    $("#ouput").append(
+                        "<b>Index</b>=" + i + ", <b>fieldName</b>=" + field.name + ", <b>fieldValue</b>=" + field.value + "<br>"
+                    );
                 });
             });
         });
@@ -38,12 +43,12 @@
         <p>Hàm được dùng để chuyển dữ liệu từ form thành mảng</p>
 
         <h4>Ví dụ</h4>
+        <button>Serialize form values</button>
         <form action="">
             First name: <input type="text" name="firstName" value="Mickey"><br>
             Last name: <input type="text" name="lastName" value="Mouse"><br>
         </form>
-        <button>Serialize form values</button>
-        <div id="results"></div>
+        <div id="ouput"></div>
     </div>
 </body>
 

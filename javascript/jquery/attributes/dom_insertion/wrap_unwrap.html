@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wrap</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+        #div1 {
+            border: 2px solid blue;
+        }
+        #p1 {
+            margin: 4px;
+            background: yellow;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-4 mb-4">
+        <h4>wrap()</h4>
+        <p>Hàm <b>wrap()</b> dùng để bọc một phần tử cha (wrapper element) xung quanh một hoặc nhiều phần tử đã chọn.
+        </p>
+        <h4>Ví dụ</h4>
+        <pre>
+            // Với
+            &lt;p&gt;This is paragraph 1&lt;/p&gt;
+            &lt;p&gt;This is paragraph 2&lt;/p&gt;
+
+            // Sử dụng
+            $("p").wrap("&lt;div class='wrapper'&gt;&lt;/div&gt;");
+
+            // Ta sẽ được
+            &lt;div class="wrapper"&gt;
+                &lt;p&gt;This is paragraph 1.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="wrapper"&gt;
+                &lt;p&gt;This is paragraph 2.&lt;/p&gt;
+            &lt;/div&gt;
+        </pre>
+
+        <h4>unwrap()</h4>
+        <button>wrap/unwrap</button>
+        <p id='p1'>Hello</p>
+        <p id='p1'>cruel</p>
+        <p id='p1'>World</p>
+        <script>
+            var pTags = $("p");
+            $("button").on("click", function () {
+                if (pTags.parent().is(".div1")) {
+                    pTags.unwrap();
+                } else {
+                    pTags.wrap("<div id='div1'></div>");
+                }
+            });
+        </script>
+    </div>
+</body>
+
+</html>
