@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Append</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(function () {
+            // Append list
+            let i = 0, j = 0;
+            $('.appendList').click(function () {
+                $('#myList').append('<li>Item ' + (++i) + '</li>');
+            });
+            // Prepend list
+            $('.prependList').click(function() {
+                $('#myList').prepend('<li>Item ' + (--j) + '</li>');
+            });
+
+            // Append text
+            $('.appendText').click(function() {
+                $('#myText').append(' new content');
+            });
+
+            $('.appendDiv').click(function() {
+                $('#myDiv').append('<p class="text-primary">This is a text 2</p>');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container mt-4 mb-4">
+        <h4>append() & appendTo()</h4>
+        <p>Thêm nội dung vào cuối các phần tử được chọn. Nội dung có thể là một chuỗi HTML, một phần tử HTML hoặc một đối tượng jQuery</p>
+        <pre>
+            // Sử dụng .append()
+            $("ul").append("&lt;li&gt;New Item&lt;/li&gt;");
+
+            // Sử dụng .appendTo()
+            $("&lt;li&gt;New Item&lt;/li&gt;").appendTo("ul");
+        </pre>
+        <p>Note: Tương tự ta có <b>prepend(), prependTo()</b></p>
+
+        <hr>
+        <h4>Ví dụ &lt;UL&gt;</h4>
+        <button class="appendList">append</button>
+        <button class="prependList">prepend</button>
+        <ul id="myList">
+            <li>Item 0</li>
+        </ul>
+
+        <hr>
+        <h4>Ví dụ TEXT</h4>
+        <button class="appendText">append</button>
+        <p id="myText" class="text-primary">This is a paragraph</p>
+
+        <hr>
+        <h4>Ví dụ &lt;DIV&gt;</h4>
+        <button class="appendDiv">append</button>
+        <div id="myDiv">
+            <p class="text-primary">This is a text 1</p>
+        </div>
+    </div>
+</body>
+
+</html>
