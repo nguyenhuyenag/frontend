@@ -11,40 +11,75 @@
         body {
             counter-reset: section;
         }
+
         h4::before {
             counter-increment: section;
             content: counter(section) ") ";
         }
+
         h4 {
             color: brown;
         }
+
         button {
             cursor: pointer;
         }
     </style>
-    <script>
-        $(function () {         
+    <!-- <script>
+        $(function () {
             $('.html').click(function () {
                 let val = $("div.demo-container").html();
                 $('.output2').text(val);
             });
-            $('.htmlString').click(function () {
-                $(".output2").html('This <button name="nada">button</button> does nothing');
-            });
-            
-            // text
-            $('.text').click(function () {
-                $(".output3").text('This <button name="nada">button</button> does nothing');
-            });
+            // $('.htmlString').click(function () {
+            //     $(".output2").html('This <button name="nada">button</button> does nothing');
+            // });
+
+            // // text
+            // $('.text').click(function () {
+            //     $(".output3").text('This <button name="nada">button</button> does nothing');
+            // });
         });
-    </script>
+    </script> -->
 </head>
 
 <body>
     <div class="container mt-4 mb-4">
         <h4>html()</h4>
-        <p>Thêm nội dung vào cuối (đầu) các phần tử được chọn. Nội dung có thể là một chuỗi HTML, một phần tử HTML hoặc một đối tượng jQuery</p>
-        
+        <p>Là một phương thức trong jQuery, được sử dụng để lấy hoặc đặt nội dung HTML của phần tử đã chọn. Khi bạn sử
+            dụng <b>html()</b> mà không truyền tham số, nó sẽ trả về nội dung HTML của phần tử đã chọn. Khi truyền một
+            chuỗi nội dung HTML vào .html(), nó sẽ đặt nội dung HTML mới cho phần tử đã chọn.
+        </p>
+        <h4>Ví dụ</h4>
+        <pre>
+            &lt;div class="demo-container"&gt;
+                &lt;div class="demo-box"&gt;Demonstration Box&lt;/div&gt;
+            &lt;/div&gt;
+
+            // Lấy nội dung HTML của phần tử div
+            $( "div.demo-container" ).html();
+            // Output
+            &lt;div class="demo-box"&gt;Demonstration Box&lt;/div&gt;
+
+            // Đặt nội dung HTML mới cho phần tử div
+            $("div").html("&lt;p&gt;New HTML content&lt;/p&gt;");
+        </pre>
+        <div class="alert alert-success">
+            <p class="text-danger">This is a text</p>
+        </div>
+        <button id="htmlNoneParam">html()</button>
+        <button id="htmlWithParam">html(params)</button>
+        <script>
+            $(function () {
+                $('#htmlNoneParam').on('click', function () {
+                    let htmlContent = $(".alert-success").html();
+                    console.log(htmlContent);
+                });
+                $('#htmlWithParam').on('click', function () {
+                    let htmlContent = $(".alert-success").html('<p class="text-success">.text-success</p>');
+                });
+            });
+        </script>
     </div>
 </body>
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>After</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4 mb-4">
+        <h4>after()</h4>
+        <p>
+            Phương thức <b>.after()</b> được sử dụng để chèn phần tử, nội dung hoặc HTML sau một phần tử đã chọn. 
+            Điều này thay đổi cấu trúc của tài liệu HTML bằng cách thêm một phần tử mới vào sau phần tử đã chọn
+        </p>
+        <h4>Ví dụ</h4>
+        <pre>
+            // Cho
+            &lt;div class="container"&gt;
+                &lt;h2&gt;Greetings&lt;/h2&gt;
+                &lt;div class="inner"&gt;Hello&lt;/div&gt;
+                &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+            &lt;/div&gt;
+            
+            // Với
+            $(".inner").after("&lt;p&gt;Test&lt;/p&gt;");
+            
+            // Ta được
+            &lt;div class="container"&gt;
+                &lt;h2&gt;Greetings&lt;/h2&gt;
+                &lt;div class="inner"&gt;Hello&lt;/div&gt;
+                &lt;p&gt;Test&lt;/p&gt;
+                &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+                &lt;p&gt;Test&lt;/p&gt;
+            &lt;/div&gt;
+        </pre>
+        <p>Ta cũng có thể sử dụng <b>.after()</b> để chèn một phần tử DOM đã có vào sau một phần tử khác:</p>
+        <pre>
+            let existingDiv = document.createElement("div");
+            existingDiv.textContent = "Existing div content";
+            $("p").after(existingDiv);
+        </pre>
+        <h4>Passing a Function</h4>
+        <p>Ta có thể custom giá trị chèn vào bằng cách</p>
+        <pre>
+            $("p").after(function() {
+                return "&lt;div&gt;" + this.className + "&lt;/div&gt;";
+            });
+        </pre>
+    </div>
+</body>
+
+</html>
