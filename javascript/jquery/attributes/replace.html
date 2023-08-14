@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Replace</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4 mb-4">
+        <h4>replaceAll()</h4>
+        <p>
+            Phương thức .replaceAll() được dùng để thay thế một tập hợp các phần tử đã chọn bằng một phần tử khác hoặc
+            nội dung.
+        </p>
+
+        <hr>
+        <h4>Ví dụ</h4>
+        <pre>
+            &lt;div class="container"&gt;
+                &lt;div class="inner first"&gt;Hello&lt;/div&gt;
+                &lt;div class="inner second"&gt;And&lt;/div&gt;
+                &lt;div class="inner third"&gt;Goodbye&lt;/div&gt;
+            &lt;/div&gt;
+
+            // Apply
+            $("&lt;h2&gt;New heading&lt;/h2&gt;").replaceAll(".inner");
+
+            // Output
+            &lt;div class="container"&gt;
+                &lt;h2&gt;New heading&lt;/h2&gt;
+                &lt;h2&gt;New heading&lt;/h2&gt;
+                &lt;h2&gt;New heading&lt;/h2&gt;
+            &lt;/div&gt;
+
+            // Or
+            $(".first").replaceAll(".third");
+
+            // Output
+            &lt;div class="container"&gt;
+                &lt;div class="inner second"&gt;And&lt;/div&gt;
+                &lt;div class="inner first"&gt;Hello&lt;/div&gt;
+            &lt;/div&gt;
+        </pre>
+    </div>
+</body>
+
+</html>
