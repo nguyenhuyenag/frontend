@@ -25,6 +25,7 @@
                     console.log("Error:", error);
                 });
             });
+            
             $('.btn-get-json').click(() => {
                 $.getJSON("https://dummyjson.com/products/1", function (data, status) {
                     let json = JSON.stringify(data, undefined, 4);

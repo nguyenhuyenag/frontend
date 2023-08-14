@@ -29,6 +29,7 @@
 
             $(selector).each(function(index, element));
         </pre>
+        
         <h4>List each</h4>
         <ul>
             <li>Coffee</li>
@@ -36,10 +37,16 @@
             <li>Soda</li>
         </ul>
         <pre>
-            $('li').each((i, e) => {
-                console.log(i, $(e).text());
+            $('li').each((index, e) => {
+                console.log(index, $(e).text());
+            });
+
+            // Or
+            $("li").each(function(index) {
+                console.log(index + ": " + $(this).text());
             });
         </pre>
+
         <h4>JSON each</h4>
         <pre>
             json = [
@@ -49,18 +56,21 @@
             ];
         </pre>
         <pre>
-            jQuery.each(json, function (i, e) {
-                console.log(i, e);
+            $.each(json, function(index, e) {
+                console.log(index, e);
             });
         </pre>
+
         <h4>Class Example</h4>
         <pre>
-            <div>Pink</div>
-            <div class="productDescription">Red</div>
-            <div class="productDescription">Orange</div>
-            <div class="generalDescription">Teal</div>
-            <div class="productDescription">Green</div>
-            $.each($('.productDescription'), function (index, value) {
+            &lt;div&gt;Pink&lt;/div&gt;
+            &lt;div class="productDescription"&gt;Red&lt;/div&gt;
+            &lt;div class="productDescription"&gt;Orange&lt;/div&gt;
+            &lt;div class="generalDescription"&gt;Teal&lt;/div&gt;
+            &lt;div class="productDescription"&gt;Green&lt;/div&gt;
+            
+            let myClass = $('.productDescription');
+            $.each(myClass, function(index, value) {
                 console.log(index + ':' + $(value).text());
             });
         </pre>
