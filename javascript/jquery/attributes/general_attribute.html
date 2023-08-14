@@ -46,6 +46,11 @@
             $(".removeAttr").on("click", function () {
                 $('.imgRemoveAttr').removeAttr('src');
             });
+
+            // text
+            $('.text').click(function () {
+                $(".output3").text('This <button name="nada">button</button> does nothing');
+            });
         });
     </script>
 </head>
@@ -62,6 +67,9 @@
 
         <h4>text()</h4>
         <p>Get hoặc set giá trị của các phần tử đầu vào: <b>p, div, span,...</b></p>
+        <p>Chỉ hỗ trợ văn bản và disable html</p>
+        <button class="text">text()</button>
+        <p class='output3'></p>
 
         <h4>attr()</h4>
         <pre>

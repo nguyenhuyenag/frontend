@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Removal</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4 mb-4">
+        <h4>empty()</h4>
+        <p>
+            Phương thức <b>empty()</b> được sử dụng để xóa nội dung của các phần tử đã chọn, bao gồm cả tất cả
+            các phần tử con và văn bản trong phần tử đó.
+        </p>
+
+        <hr>
+        <h4>detach & remove()</h4>
+        <p>
+            Cả 2 đều được dùng để xóa bỏ phần tử khỏi cấu trúc DOM. Tuy nhiên phần tử bị xóa bằng <b>detach()</b> vẫn còn lưu trong bộ nhớ
+            (sự kiện, dữ liệu và phần tử con,...) và có thể phục hồi
+        </p>
+
+        <hr>
+        <h4>Ví dụ</h4>
+        <p id="p-empty" class="alert alert-primary">
+            Hello, <span>Person</span> <em>and person</em>.
+        </p>
+        <button class="btnDetach">Call detach()</button>
+        <button class="btnEmpty">Call empty()</button>
+        <button class="btnRemove">Call remove()</button>
+        <script>
+            $(".btnDetach").on("click", function () {
+                let item = $("#p-empty").detach();
+                console.log(item);
+            });
+            $(".btnEmpty").on("click", function () {
+                let item = $("#p-empty").empty();
+                console.log(item);
+            });
+            $(".btnRemove").on("click", function () {
+                let item = $("#p-empty").remove();
+                console.log(item);
+            });
+        </script>
+    </div>
+</body>
+
+</html>

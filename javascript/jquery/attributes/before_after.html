@@ -31,6 +31,7 @@
             Phương thức <b>.after()</b> được sử dụng để chèn phần tử, nội dung hoặc HTML sau một phần tử đã chọn. 
             Điều này thay đổi cấu trúc của tài liệu HTML bằng cách thêm một phần tử mới vào sau phần tử đã chọn
         </p>
+        
         <h4>Ví dụ</h4>
         <pre>
             // Cho
@@ -58,6 +59,7 @@
             existingDiv.textContent = "Existing div content";
             $("p").after(existingDiv);
         </pre>
+        
         <h4>Passing a Function</h4>
         <p>Ta có thể custom giá trị chèn vào bằng cách</p>
         <pre>
@@ -65,6 +67,13 @@
                 return "&lt;div&gt;" + this.className + "&lt;/div&gt;";
             });
         </pre>
+
+        <h4>insertAfter()</h4>
+        <p>Tương tự như phương thức <b>after</b></p>
+        <pre>
+            $("&lt;p&gt;Test&lt;/p&gt;").insertAfter(".inner");
+        </pre>
+        <b>Note:</b> Tương tự ta có <b>.before()</b> và <b>.insertBefore()</b>
     </div>
 </body>
 
