@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Get</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h4::before {
+            counter-increment: section;
+            content: counter(section) ") ";
+        }
+        h4 {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <hr>
+        <h4>get()</h4>
+        <p>Lấy phần tử theo chỉ số</p>
+
+        <h4>Ví dụ</h4>
+        <ul>
+            <li id="foo">foo</li>
+            <li id="bar">bar</li>
+            <li id="bar">moon</li>
+        </ul>
+        <button id="btnGet">Call get(0)</button>
+        <script>
+            $('#btnGet').click(function() {
+                console.log($("li")[0]);
+                console.log($("li").get(0));
+            });
+        </script>
+
+        <hr>
+        <h4>index()</h4>
+        <p>Lấy chỉ số của phần tử được chọn</p>
+
+        <h4>Ví dụ</h4>
+        <pre>
+            &lt;ul&gt;
+                &lt;li&gt;Item 1&lt;/li&gt;
+                &lt;li&gt;Item 2&lt;/li&gt;
+                &lt;li class=&quot;target&quot;&gt;Target Item&lt;/li&gt;
+                &lt;li&gt;Item 3&lt;/li&gt;
+            &lt;/ul&gt;
+
+            let index = $('li.target').index();
+            $('#output').text("Index of target item: " + index); // = 2 (đếm từ 0)
+        </pre>
+    </div>
+</body>
+
+</html>
