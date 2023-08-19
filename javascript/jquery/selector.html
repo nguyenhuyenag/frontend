@@ -22,9 +22,9 @@
     <div class="container mt-4 mb-4">
         <table>
             <thead>
-                <th style="width:30%">Selector</th>
+                <th style="width:25%">Selector</th>
                 <th style="width:20%;">Example</th>
-                <th style="width:60%">Description</th>
+                <th style="width:55%">Description</th>
             </thead>
             <tbody>
                 <tr>
@@ -184,7 +184,7 @@
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute_contains_value.asp">[<i>attribute</i>~=<i>value</i>]</a></td>
                     <td>$("[title~='hello']")</td>
-                    <td>Tất cả phần tử mà thuộc tính title <b>chứa</b> 'hello' (độc lập bởi dấu cách, 'helloo' không đúng)</td>
+                    <td>Tất cả phần tử mà title <b>chứa</b> 'hello' (độc lập bởi dấu cách, 'helloo' không đúng)</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute_contains_string_value.asp">[<i>attribute*</i>=<i>value</i>]</a></td>
@@ -192,9 +192,9 @@
                     <td>Tương tự trên nhưng cả "hello" và "helloo" đều hợp lệ</td>
                 </tr>
                 <tr>
-                    <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_attribute_contains_string_value.asp">[name=”value”][name2=”value2″]</a></td>
-                    <td>$("[title*='hello']")</td>
-                    <td>ABC</td>
+                    <td><a target="_blank" href="https://api.jquery.com/multiple-attribute-selector/">[name=”value”][name2=”value2″]</a></td>
+                    <td>$("input[id][name$='man']")</td>
+                    <td>Chọn phần từ dựa trên nhiều thuộc tính</td>
                 </tr>
 
                 <tr>
@@ -312,7 +312,7 @@
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_parent.asp">:parent</a></td>
                     <td>$("td:parent")</td>
-                    <td>Những &lt;td&gt; có phần từ con (chứa nội dung). Phần tử con có thể là văn bản, HTML, hoặc bất kỳ phần tử nào bên trong</td>
+                    <td>Những &lt;td&gt; có phần tử con (chứa nội dung). Phần tử con có thể là văn bản, HTML, hoặc bất kỳ phần tử nào bên trong</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" href="https://www.w3schools.com/jquery/sel_hidden.asp">:hidden</a></td>
