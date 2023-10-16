@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT-like Text Animation with jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        let index = 0;
+        const outputDiv = $("#output");
+        
+        const text = "Hello, this is ChatGPT. How can I assist you today?";
+
+        function printCharacter() {
+            if (index < text.length) {
+                outputDiv.append(text.charAt(index));
+                index++;
+                setTimeout(printCharacter, 50); // Đặt thời gian delay giữa mỗi ký tự
+            }
+        }
+
+        printCharacter();
+    </script>
+</body>
+</html>
