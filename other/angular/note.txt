@@ -8,7 +8,8 @@
 
 	- cd <project name>
 
-	- npm run ng serve
+	- npm run ng serve (run project)
+	
 
 	- ng generate module app-routing --flat --module=app (tạo file app-routing.module.ts nếu chưa có)
 
