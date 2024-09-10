@@ -8,21 +8,22 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 	<style>
 		h3 {
 			color: rgb(207, 8, 8);
 			font-weight: bold;
 		}
 	</style>
+
 	<script>
 		$(function () {
 			$('#btn-yes').click(function() {
-				console.log('yes');
-				// $('#exampleModal').trigger();
 				$('#exampleModal').modal('hide');
+				$('#result').text('YES');
 			});
 			$('#btn-no').click(function() {
-				console.log('no');
+				$('#result').text('NO');
 			});
 		});
 	</script>
@@ -30,10 +31,13 @@
 
 <body>
 	<div class="container">
+		<h3>Confirm Modal</h3>
 		<!-- Button trigger modal -->
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 			Launch demo modal
 		</button>
+
+		<p id='result'></p>
 
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -47,11 +51,11 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						...
+						Are you sure?
 					</div>
 					<div class="modal-footer">
-						<button id='btn-no' type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
 						<button id='btn-yes' type="button" class="btn btn-primary">Yes</button>
+						<button id='btn-no' type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 					</div>
 				</div>
 			</div>
