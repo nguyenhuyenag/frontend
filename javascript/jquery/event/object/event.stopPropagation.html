@@ -33,15 +33,19 @@
         <p>Ngăn chặn sự lan toả của sự kiện lên các phần tử cha của phần tử hiện tại trong cây DOM</p>
 
         <h4>Ví dụ</h4>
+
         <p>
             Khi bấm vào nút "Click me", cả 2 bộ xử lý sự kiện sẽ được thực thi. Để khắc phục ta cần sử dụng
             <b>event.stopPropagation()</b> trong bộ xử lý của phần tử con:
         </p>
+
         <div id="parent">
             <button id="child1">Click me</button>
             <button id="child2">Click me (stopPropagation)</button>
         </div>
+
         <p id='output'></p>
+        
         <script>
             $("#parent").click(function (event) {
                 $('#output').append("Parent clicked!");

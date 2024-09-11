@@ -127,6 +127,40 @@
                 $('#ouputClick').text($(this).text());
             });
         </script>
+
+        <h4>Important</h4>
+        <p>
+            Returning <code>false</code> from an event handler will automatically call <code>event.stopPropagation()</code> 
+            and <code>event.preventDefault()</code>.
+        </p>
+        <p>
+            Tham khảo thêm hàm <code>off()</code>
+        </p>
+        <pre>
+            $("button").on("click", function () {
+                // Xử lý khi nút được click
+                return false;
+            });
+
+            $( "a.disabled" ).on( "click", false );
+
+            $("a.disabled").on("click", function() {
+                return false;  // Ngăn việc theo liên kết
+            });
+
+            $("button").on("click", function() {
+                // Ngăn chặn hành động mặc định và lan truyền sự kiện
+                return false; 
+            });
+
+            $("button").on("click", function(event) {
+                event.stopPropagation();  // Chỉ ngăn lan truyền, không chặn hành vi mặc định
+            });
+
+            $("form").on("submit", function(event) {
+                event.preventDefault();  // Ngăn submit form nhưng vẫn cho phép sự kiện lan truyền
+            });
+        </pre>
     </div>
 </body>
 

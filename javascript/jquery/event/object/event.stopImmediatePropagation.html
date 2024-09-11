@@ -31,39 +31,60 @@
     <div class="container mt-4">
         <h4>event.stopImmediatePropagation</h4>
         <p>
-            Khi bạn gọi event.stopImmediatePropagation() trong một bộ xử lý sự kiện, nó không chỉ ngừng chặn sự kiện đang
+            Khi bạn gọi event.stopImmediatePropagation() trong một bộ xử lý sự kiện, nó không chỉ ngừng chặn sự kiện
+            đang
             được thực thi, mà còn ngừng chặn sự thực thi của tất cả các bộ xử lý sự kiện cùng loại được gắn liền với
-            cùng một phần tử sau bộ xử lý đó
+            <strong class="text-danger">cùng một phần tử</strong> sau bộ xử lý đó.
         </p>
 
         <h4>Ví dụ</h4>
+        <p>1) </p>
         <pre>
-            $("#myButton").click(function(event) {
-                console.log("First handler");
+            $("#myButton1").click(function(event) {
+                $('#result').append('append 1 ');
             });
               
-            $("#myButton").click(function(event) {
-                console.log("Second handler");
+            $("#myButton1").click(function(event) {
+                $('#result').append('append 2');
                 event.stopImmediatePropagation(); // Ngừng chặn các bộ xử lý sự kiện cùng loại sau đây
             });
             
-            $("#myButton").click(function(event) {
-                console.log("Third handler"); // Sẽ không được thực thi
+            $("#myButton1").click(function(event) {
+                $('#result').append('append 3'); // Cho nên đoạn này sẽ không được thực thi
             });
         </pre>
-        <button id="myButton">Click me</button>
+
+        <button id="myButton0">Click me</button>
+        <button id="myButton1">Click me (stopImmediatePropagation)</button>
+        <p id='result0'></p>
+        <p id='result1'></p>
+
         <script>
-            $("#myButton").click(function(event) {
-                console.log("1st handler");
+            // Event for myButton0
+            $("#myButton0").click((event) => {
+                $('#result0').append('append 1 ');
             });
-              
-            $("#myButton").click(function(event) {
-                console.log("2nd handler");
+
+            $("#myButton0").click((event) => {
+                $('#result0').append('append 2 ');
+            });
+
+            $("#myButton0").click((event) => {
+                $('#result0').append('append 3');
+            });
+
+            // Event for myButton1
+            $("#myButton1").click((event) => {
+                $('#result1').append('append 1 ');
+            });
+
+            $("#myButton1").click((event) => {
+                $('#result1').append('append 2 ');
                 event.stopImmediatePropagation(); // Ngừng chặn các bộ xử lý sự kiện cùng loại sau đây
             });
-            
-            $("#myButton").click(function(event) {
-                console.log("3rd handler"); // Sẽ không được thực thi
+
+            $("#myButton1").click((event) => {
+                $('#result1').append('append 3 '); // Sẽ không được thực thi
             });
         </script>
     </div>
