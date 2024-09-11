@@ -41,7 +41,7 @@
                             + "<td class='text-center'>" + (item['price'] || "") + "</td>"
                             + "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"doAction("
                                 + item['id'] + "," 
-                                + "'" + item['name'] + "'" // as string
+                                + "`" + item['name'] + "`" // as string
                                 // + "`" + item['name'] + "`" // as string
                             + ")\" >Primary</button></td>"
                         + "</tr>";
@@ -79,7 +79,7 @@
             <tfoot>
                 <tr>
                     <th colspan="3" style="text-align: right;">Tổng</th>
-                    <th id='sum-result' class="text-center">0</th>
+                    <th id='sum-result' class="text-center">xxx</th>
                     <th></th>
                 </tr>
             </tfoot>
