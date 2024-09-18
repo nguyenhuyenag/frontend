@@ -37,6 +37,7 @@
                     pageList: [9, 30, 45, 100],
                     paginationPreText: "Previous",
                     paginationNextText: "Next",
+                    paginationLoop: false, // Disable button `Next`, `Previous` khi ở page 1 và page cuối,
                     formatShowingRows: function (pageFrom, pageTo, totalRows) {
                         return 'Hiển thị ' + pageFrom + ' đến ' + pageTo + ' của ' + totalRows + ' dòng';
                     },
