@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Data</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        button {
+            cursor: pointer;
+        }
+
+        .log {
+            list-style-type: decimal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h4>data: PlainObject</h4>
+        <pre>
+            $.ajax({
+                url: 'https://example.com/api/submit',
+                data: {
+                    name: "John Doe",
+                    age: 30
+                },
+                beforeSend: function (xhr, settings) {
+                    console.log('Request URL:', settings.url);
+                }
+            });
+        </pre>
+
+        <h4>data: String</h4>
+
+        <h4>data: Array</h4>
+        <pre>
+            $.ajax({
+                url: 'https://example.com/api/submit',
+                data: [
+                    { name: 'name', value: "John Doe" },
+                    { name: 'age', value: 30 },
+                    { name: 'email', value: "john.doe@example.com" }
+                ]
+            });
+        </pre>
+
+        <div class="text-center">
+            <button class='btn-primary btn-plainObject'>Data PlainObject</button>
+        </div>
+
+        <div id="wait"
+            style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
+            <img src='https://www.w3schools.com/jquery/demo_wait.gif' width="64" height="64" />
+            <br>Loading...
+        </div>
+
+        <ul class="log"></ul>
+
+        <hr>
+        <h4>URL</h4>
+        <pre class='url'></pre>
+
+        <h4>Result</h4>
+        <pre class='result'></pre>
+    </div>
+</body>
+
+<script>
+    function writeLog(text) {
+        const $li = '<li>' + moment().format("YYYY-MM-DD HH:mm:ss") + ': ' + text + '</li>';
+        $(".log").append($li);
+    }
+
+    // Ajax Global Event
+    $(document).ajaxStart(function () {
+        writeLog('<strong>Global Event</strong>: ajaxStart');
+    });
+
+    $(document).ajaxSend(function () {
+        writeLog('<strong>Global Event</strong>: ajaxSend');
+    });
+
+    $(document).ajaxSuccess(function () {
+        writeLog('<strong class=\'text-success\'>Global Event: ajaxSuccess</strong>');
+    });
+
+    $(document).ajaxComplete(function () {
+        writeLog('<strong>Global Event</strong>: ajaxComplete');
+    });
+
+    $(document).ajaxError(function () {
+        writeLog('<strong class=\'text-danger\'>Global Event: ajaxError</strong>');
+    });
+
+    $(document).ajaxStop(function () {
+        writeLog('<strong>Global Event</strong>: ajaxStop');
+    });
+
+    function callAjax(url, data) {
+        $('.log, .result').empty();
+        $.ajax({
+            url: url,
+            method: 'GET',
+            data: data,
+            beforeSend: function (xhr, settings) {
+                writeLog('beforeSend');
+                const json = {
+                    'url': settings.url
+                };
+                $('.url').text(JSON.stringify(json, null, 4));
+            },
+            success: function (data, textStatus, xhr) {
+                writeLog('<strong class=\'text-success\'>success</strong>');
+                console.log('textStatus:', textStatus);
+                $('.result').text(JSON.stringify(data, null, 4));
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                writeLog('<strong class=\'text-danger\'>error</strong>');
+                console.log("xhr.status:", xhr.status);
+                $('.result').text(JSON.stringify(xhr, null, 4));
+            },
+            complete: function () { // Finally
+                writeLog('complete <strong class=\'text-primary\'>(Finally)</strong>');
+            }
+        });
+    }
+
+    // Ajax Local Event
+    $('.btn-plainObject').click(function () {
+        const data = {
+            name: "John Doe",
+            age: 30,
+            email: "john.doe@example.com"
+        };
+        callAjax('https://example.com/api/submit', data);
+    });
+
+    // $('.btn-danger').click(function () {
+    //     callAjax('https://app.asana.com/-/api/0.1/workspaces/');
+    // });
+</script>
+
+</html>
