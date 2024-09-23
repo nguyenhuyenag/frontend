@@ -45,7 +45,7 @@
     <script>
         function toJson(formObject) {
             let formData = {};
-            $.each(formObject, function (index, element) {
+            $.each(formObject, (index, element) => {
                 formData[element.name] = element.value;
             });
             return formData;
@@ -53,8 +53,7 @@
 
         $('button').on('click', function () {
             let formData = toJson($('.myForm').serializeArray());
-            console.log(formData);
-            $('.result').text(JSON.stringify(formData, undefined, 4));
+            $('.result').text(JSON.stringify(formData, null, 4));
             return false;
         });
     </script>
