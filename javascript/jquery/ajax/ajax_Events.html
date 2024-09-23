@@ -12,94 +12,121 @@
         button {
             cursor: pointer;
         }
-        .ouput {
+
+        .log {
             list-style-type: decimal;
         }
     </style>
-    <script>
-        function createText(methodName) {
-            return '<li>' + moment().format("YYYY-MM-DD HH:mm:ss") + ': ' + methodName + '</li>';
-        }
-        $(function () {
-            $(document).ajaxSend(function () {
-                $("#ouput").append(createText('ajaxSend'));
-            });
-
-            $(document).ajaxStart(function () {
-                $("#wait").css("display", "block");
-                $("#ouput").append(createText('ajaxStart'));
-            });
-
-            $(document).ajaxComplete(function () {
-                $("#wait").css("display", "none");
-                $("#ouput").append(createText('ajaxComplete'));
-            });
-
-            $(document).ajaxSuccess(function () {
-                $("#ouput").append(createText('ajaxSuccess'));
-            });
-
-            $(document).ajaxStop(function () {
-                $("#ouput").append(createText('ajaxStop'));
-            });
-
-            $(document).ajaxError(function () {
-                $("#ouput").append(createText('ajaxError'));
-            });
-
-            $("#btn-1").click(function () {
-                $('#ouput, #result').empty();
-                $.getJSON("https://dummyjson.com/products/1", function (data, status) {
-                    let json = JSON.stringify(data, undefined, 4);
-                    $('#result').text(json);
-                });
-            });
-
-            $("#btn-2").click(function () {
-                let result;
-                $('#ouput, #result').empty();
-                $.getJSON("https://app.asana.com/-/api/0.1/workspaces/") //
-                    .done(function (data) {
-                        result = data;
-                    }).fail(function (jqXHR, textStatus, error) {
-                        console.log(jqXHR);
-                        console.log(textStatus);
-                        console.log(error);
-                        result = jqXHR.responseText;
-                    }).always(function () {
-                        // Handle completion (success or error)
-                        let json = JSON.stringify(result, undefined, 4);
-                        $('#result').text(json);
-                    });
-            });
-        });
-    </script>
 </head>
 
 <body>
     <div class="container mt-4">
-        <h3>View more: <a href="https://api.jquery.com/Ajax_Events/"
-                target="_blank">https://api.jquery.com/Ajax_Events/</a></h3>
+        <h3><a href="https://api.jquery.com/Ajax_Events/" target="_blank">https://api.jquery.com/Ajax_Events/</a></h3>
 
-        <p><strong>Note: </strong>Các hàm ajaxSuccess(), ajaxError() chỉ được gọi khi có phản hồi từ yêu cầu Ajax, còn
-            các hàm ajaxSend(), ajaxStart(), ajaxComplete(), ajaxStop() được gọi dựa trên các sự kiện trước và sau khi
-            gửi yêu cầu Ajax</p>
-        <hr>
+        <p>
+            <strong>Note: </strong>Các hàm <span class="text-danger">ajaxSuccess(), ajaxError()</span> chỉ được gọi khi
+            có phản hồi
+            từ yêu cầu Ajax, còn các hàm <span class="text-danger">ajaxSend(), ajaxStart(), ajaxComplete(),
+                ajaxStop()</span> được gọi dựa trên các sự kiện trước và sau khi gửi yêu cầu Ajax.
+        </p>
+
+        <hr />
 
         <div class="text-center">
-            <button id='btn-1'>Ajax Events</button>
-            <button id='btn-2'>Ajax Error</button>
+            <button class='btn-success'>Ajax Events</button>
+            <button class='btn-danger'>Ajax Error</button>
         </div>
+
         <div id="wait"
             style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
             <img src='https://www.w3schools.com/jquery/demo_wait.gif' width="64" height="64" />
             <br>Loading...
         </div>
 
-        <ul id="ouput"></ul>
+        <ul class="log"></ul>
         <hr>
-        <pre id='result'></pre>
+        <pre class='result'></pre>
     </div>
 </body>
+
+<script>
+    function writeLog(text) {
+        const $li = '<li>' + moment().format("YYYY-MM-DD HH:mm:ss") + ': ' + text + '</li>';
+        $(".log").append($li);
+    }
+
+    // Ajax Global Event
+    $(document).ajaxStart(function () {
+        writeLog('<strong>Global Event</strong>: ajaxStart');
+    });
+
+    $(document).ajaxComplete(function () {
+        writeLog('<strong>Global Event</strong>: ajaxComplete');
+    });
+
+    $(document).ajaxError(function () {
+        writeLog('<strong>Global Event</strong>: ajaxError');
+    });
+
+    $(document).ajaxSend(function () {
+        writeLog('<strong>Global Event</strong>: ajaxSend');
+    });
+
+    $(document).ajaxSuccess(function () {
+        writeLog('<strong>Global Event</strong>:: ajaxSuccess');
+    });
+
+    $(document).ajaxStop(function () {
+        writeLog('<strong>Global Event</strong>: ajaxStop');
+    });
+
+    // Ajax Local Event
+    $('.btn-success').click(function () {
+        $('.log, .result').empty();
+        $.ajax({
+            url: "https://dummyjson.com/products/1",
+            method: 'GET',
+            beforeSend: function () {
+                writeLog('beforeSend');
+            },
+            success: function (data, status, xhr) {
+                writeLog('success');
+                $('.result').text(JSON.stringify(data, undefined, 4));
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                writeLog('<strong class=\'text-danger\'>error</strong>');
+                $('.result').text(JSON.stringify(xhr, undefined, 4));
+                // console.log("textStatus: ", textStatus);
+                // console.log("errorThrown: ", errorThrown);
+            },
+            complete: function () { // Finally
+                writeLog('complete');
+            }
+        });
+    });
+
+    $('.btn-danger').click(function () {
+        $('.log, .result').empty();
+        $.ajax({
+            url: 'https://app.asana.com/-/api/0.1/workspaces/',
+            method: 'GET',
+            beforeSend: function () {
+                writeLog('beforeSend');
+            },
+            success: function (data) {
+                writeLog('success');
+                $('.result').text(JSON.stringify(data, undefined, 4));
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                writeLog('<strong class=\'text-danger\'>error</strong>');
+                $('.result').text(JSON.stringify(xhr, undefined, 4));
+                console.log("xhr.status:", xhr.status);
+            },
+            complete: function () { // Finally
+                writeLog('complete');
+            }
+        });
+    });
+</script>
 
 </html>
