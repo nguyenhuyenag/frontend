@@ -21,14 +21,28 @@
 
 <body>
     <div class="container mt-4">
-        <h3><a href="https://api.jquery.com/Ajax_Events/" target="_blank">https://api.jquery.com/Ajax_Events/</a></h3>
+        <h5><a target="_blank" href="https://api.jquery.com/Ajax_Events/">https://api.jquery.com/Ajax_Events/</a></h5>
 
         <p>
             <strong>Note: </strong>Các hàm <span class="text-danger">ajaxSuccess(), ajaxError()</span> chỉ được gọi khi
-            có phản hồi
-            từ yêu cầu Ajax, còn các hàm <span class="text-danger">ajaxSend(), ajaxStart(), ajaxComplete(),
+            có phản hồi từ yêu cầu Ajax, còn các hàm <span class="text-danger">ajaxSend(), ajaxStart(), ajaxComplete(),
                 ajaxStop()</span> được gọi dựa trên các sự kiện trước và sau khi gửi yêu cầu Ajax.
         </p>
+
+        <hr />
+
+        <h5><a target="_blank" href="https://api.jquery.com/jQuery.ajax/">https://api.jquery.com/jQuery.ajax/</a></h5>
+        <ul>
+            <li><code>async: boolean</code>: Cho phép <code>ajax</code> chạy nền và xử lý kết quả thông qua các hàm callbacks (success, error,...). Không nên đặt <code>async: false</code>.</li>
+            <li><code>cache: boolean</code>: Trình duyệt sẽ lưu trữ (cache) kết quả của yêu cầu AJAX. Trường hợp <code>false</code> chỉ hoạt động đúng đối với <strong>HEAD</strong> và <strong>GET</strong> requests.</li>
+        </ul>
+        <pre>
+            $.ajax({
+                async: true, // default is 'true'
+                cache: true, // default is 'true', 'false' for dataType 'script' and 'jsonp'
+                contentType: 'application/json; charset=utf-8',
+            });
+        </pre>
 
         <hr />
 
@@ -60,20 +74,20 @@
         writeLog('<strong>Global Event</strong>: ajaxStart');
     });
 
-    $(document).ajaxComplete(function () {
-        writeLog('<strong>Global Event</strong>: ajaxComplete');
-    });
-
-    $(document).ajaxError(function () {
-        writeLog('<strong>Global Event</strong>: ajaxError');
-    });
-
     $(document).ajaxSend(function () {
         writeLog('<strong>Global Event</strong>: ajaxSend');
     });
 
     $(document).ajaxSuccess(function () {
-        writeLog('<strong>Global Event</strong>:: ajaxSuccess');
+        writeLog('<strong class=\'text-success\'>Global Event: ajaxSuccess</strong>');
+    });
+
+    $(document).ajaxComplete(function () {
+        writeLog('<strong>Global Event</strong>: ajaxComplete');
+    });
+
+    $(document).ajaxError(function () {
+        writeLog('<strong class=\'text-danger\'>Global Event: ajaxError</strong>');
     });
 
     $(document).ajaxStop(function () {
@@ -89,7 +103,7 @@
                 writeLog('beforeSend');
             },
             success: function (data, textStatus, xhr) {
-                writeLog('success');
+                writeLog('<strong class=\'text-success\'>success</strong>');
                 console.log('textStatus:', textStatus);
                 $('.result').text(JSON.stringify(data, undefined, 4));
             },
@@ -99,7 +113,7 @@
                 $('.result').text(JSON.stringify(xhr, undefined, 4));
             },
             complete: function () { // Finally
-                writeLog('complete <strong class=\'text-success\'>(Finally)</strong>');
+                writeLog('complete <strong class=\'text-primary\'>(Finally)</strong>');
             }
         });
     }
@@ -111,26 +125,6 @@
 
     $('.btn-danger').click(function () {
         callAjax('https://app.asana.com/-/api/0.1/workspaces/');
-        // $('.log, .result').empty();
-        // $.ajax({
-        //     url: 'https://app.asana.com/-/api/0.1/workspaces/',
-        //     method: 'GET',
-        //     beforeSend: function () {
-        //         writeLog('beforeSend');
-        //     },
-        //     success: function (data) {
-        //         writeLog('success');
-        //         $('.result').text(JSON.stringify(data, undefined, 4));
-        //     },
-        //     error: function (xhr, textStatus, errorThrown) {
-        //         writeLog('<strong class=\'text-danger\'>error</strong>');
-        //         $('.result').text(JSON.stringify(xhr, undefined, 4));
-        //         console.log("xhr.status:", xhr.status);
-        //     },
-        //     complete: function () { // Finally
-        //         writeLog('complete');
-        //     }
-        // });
     });
 </script>
 
