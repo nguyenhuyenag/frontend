@@ -24,7 +24,6 @@
         <h4>data: PlainObject</h4>
         <pre>
             $.ajax({
-                url: 'https://example.com/api/submit',
                 data: {
                     name: "John Doe",
                     age: 30
@@ -36,11 +35,15 @@
         </pre>
 
         <h4>data: String</h4>
+        <pre>
+            $.ajax({
+                data: "name=John Doe&age=30&email=john.doe@example.com",
+            });
+        </pre>
 
         <h4>data: Array</h4>
         <pre>
             $.ajax({
-                url: 'https://example.com/api/submit',
                 data: [
                     { name: 'name', value: "John Doe" },
                     { name: 'age', value: 30 },
@@ -51,6 +54,8 @@
 
         <div class="text-center">
             <button class='btn-primary btn-plainObject'>Data PlainObject</button>
+            <button class='btn-danger btn-string'>Data String</button>
+            <button class='btn-success btn-array'>Data Array</button>
         </div>
 
         <div id="wait"
@@ -133,16 +138,26 @@
     // Ajax Local Event
     $('.btn-plainObject').click(function () {
         const data = {
-            name: "John Doe",
+            name: "Plain Object",
             age: 30,
             email: "john.doe@example.com"
         };
         callAjax('https://example.com/api/submit', data);
     });
 
-    // $('.btn-danger').click(function () {
-    //     callAjax('https://app.asana.com/-/api/0.1/workspaces/');
-    // });
+    $('.btn-string').click(function () {
+        const data = "name=String&age=30&email=john.doe@example.com";
+        callAjax('https://example.com/api/submit', data);
+    });
+
+    $('.btn-array').click(function () {
+        const data = [
+            { name: 'name', value: "Array" },
+            { name: 'age', value: 30 },
+            { name: 'email', value: "john.doe@example.com" }
+        ];
+        callAjax('https://example.com/api/submit', data);
+    });
 </script>
 
 </html>
