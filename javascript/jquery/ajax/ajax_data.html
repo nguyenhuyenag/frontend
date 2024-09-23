@@ -52,10 +52,20 @@
             });
         </pre>
 
+        <h4>data: JSON</h4>
+        <pre>
+            $.ajax({
+                method: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(json),
+            });
+        </pre>
+
         <div class="text-center">
             <button class='btn-primary btn-plainObject'>Data PlainObject</button>
             <button class='btn-danger btn-string'>Data String</button>
             <button class='btn-success btn-array'>Data Array</button>
+            <button class='btn-success btn-json'>Data JSON</button>
         </div>
 
         <div id="wait"
@@ -80,31 +90,6 @@
         const $li = '<li>' + moment().format("YYYY-MM-DD HH:mm:ss") + ': ' + text + '</li>';
         $(".log").append($li);
     }
-
-    // // Ajax Global Event
-    // $(document).ajaxStart(function () {
-    //     writeLog('<strong>Global Event</strong>: ajaxStart');
-    // });
-
-    // $(document).ajaxSend(function () {
-    //     writeLog('<strong>Global Event</strong>: ajaxSend');
-    // });
-
-    // $(document).ajaxSuccess(function () {
-    //     writeLog('<strong class=\'text-success\'>Global Event: ajaxSuccess</strong>');
-    // });
-
-    // $(document).ajaxComplete(function () {
-    //     writeLog('<strong>Global Event</strong>: ajaxComplete');
-    // });
-
-    // $(document).ajaxError(function () {
-    //     writeLog('<strong class=\'text-danger\'>Global Event: ajaxError</strong>');
-    // });
-
-    // $(document).ajaxStop(function () {
-    //     writeLog('<strong>Global Event</strong>: ajaxStop');
-    // });
 
     function callAjax(url, data) {
         $('.log, .result').empty();
@@ -157,6 +142,10 @@
             { name: 'email', value: "john.doe@example.com" }
         ];
         callAjax('https://example.com/api/submit', data);
+    });
+
+    $('.btn-json').click(function () {
+        
     });
 </script>
 
