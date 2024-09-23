@@ -80,52 +80,57 @@
         writeLog('<strong>Global Event</strong>: ajaxStop');
     });
 
-    // Ajax Local Event
-    $('.btn-success').click(function () {
+    function callAjax(url) {
         $('.log, .result').empty();
         $.ajax({
-            url: "https://dummyjson.com/products/1",
+            url: url,
             method: 'GET',
             beforeSend: function () {
                 writeLog('beforeSend');
             },
-            success: function (data, status, xhr) {
+            success: function (data, textStatus, xhr) {
                 writeLog('success');
+                console.log('textStatus:', textStatus);
                 $('.result').text(JSON.stringify(data, undefined, 4));
             },
             error: function (xhr, textStatus, errorThrown) {
                 writeLog('<strong class=\'text-danger\'>error</strong>');
+                console.log("xhr.status:", xhr.status);
                 $('.result').text(JSON.stringify(xhr, undefined, 4));
-                // console.log("textStatus: ", textStatus);
-                // console.log("errorThrown: ", errorThrown);
             },
             complete: function () { // Finally
-                writeLog('complete');
+                writeLog('complete <strong class=\'text-success\'>(Finally)</strong>');
             }
         });
+    }
+
+    // Ajax Local Event
+    $('.btn-success').click(function () {
+        callAjax('https://dummyjson.com/products/1');
     });
 
     $('.btn-danger').click(function () {
-        $('.log, .result').empty();
-        $.ajax({
-            url: 'https://app.asana.com/-/api/0.1/workspaces/',
-            method: 'GET',
-            beforeSend: function () {
-                writeLog('beforeSend');
-            },
-            success: function (data) {
-                writeLog('success');
-                $('.result').text(JSON.stringify(data, undefined, 4));
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                writeLog('<strong class=\'text-danger\'>error</strong>');
-                $('.result').text(JSON.stringify(xhr, undefined, 4));
-                console.log("xhr.status:", xhr.status);
-            },
-            complete: function () { // Finally
-                writeLog('complete');
-            }
-        });
+        callAjax('https://app.asana.com/-/api/0.1/workspaces/');
+        // $('.log, .result').empty();
+        // $.ajax({
+        //     url: 'https://app.asana.com/-/api/0.1/workspaces/',
+        //     method: 'GET',
+        //     beforeSend: function () {
+        //         writeLog('beforeSend');
+        //     },
+        //     success: function (data) {
+        //         writeLog('success');
+        //         $('.result').text(JSON.stringify(data, undefined, 4));
+        //     },
+        //     error: function (xhr, textStatus, errorThrown) {
+        //         writeLog('<strong class=\'text-danger\'>error</strong>');
+        //         $('.result').text(JSON.stringify(xhr, undefined, 4));
+        //         console.log("xhr.status:", xhr.status);
+        //     },
+        //     complete: function () { // Finally
+        //         writeLog('complete');
+        //     }
+        // });
     });
 </script>
 
