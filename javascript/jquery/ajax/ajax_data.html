@@ -81,30 +81,30 @@
         $(".log").append($li);
     }
 
-    // Ajax Global Event
-    $(document).ajaxStart(function () {
-        writeLog('<strong>Global Event</strong>: ajaxStart');
-    });
+    // // Ajax Global Event
+    // $(document).ajaxStart(function () {
+    //     writeLog('<strong>Global Event</strong>: ajaxStart');
+    // });
 
-    $(document).ajaxSend(function () {
-        writeLog('<strong>Global Event</strong>: ajaxSend');
-    });
+    // $(document).ajaxSend(function () {
+    //     writeLog('<strong>Global Event</strong>: ajaxSend');
+    // });
 
-    $(document).ajaxSuccess(function () {
-        writeLog('<strong class=\'text-success\'>Global Event: ajaxSuccess</strong>');
-    });
+    // $(document).ajaxSuccess(function () {
+    //     writeLog('<strong class=\'text-success\'>Global Event: ajaxSuccess</strong>');
+    // });
 
-    $(document).ajaxComplete(function () {
-        writeLog('<strong>Global Event</strong>: ajaxComplete');
-    });
+    // $(document).ajaxComplete(function () {
+    //     writeLog('<strong>Global Event</strong>: ajaxComplete');
+    // });
 
-    $(document).ajaxError(function () {
-        writeLog('<strong class=\'text-danger\'>Global Event: ajaxError</strong>');
-    });
+    // $(document).ajaxError(function () {
+    //     writeLog('<strong class=\'text-danger\'>Global Event: ajaxError</strong>');
+    // });
 
-    $(document).ajaxStop(function () {
-        writeLog('<strong>Global Event</strong>: ajaxStop');
-    });
+    // $(document).ajaxStop(function () {
+    //     writeLog('<strong>Global Event</strong>: ajaxStop');
+    // });
 
     function callAjax(url, data) {
         $('.log, .result').empty();
