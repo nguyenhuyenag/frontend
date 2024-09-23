@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>From</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        a {
+            color: blue;
+            font-weight: 500;
+        }
+
+        tbody tr td:nth-child(2) {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4 mb-4">
+        <form class='myForm' style="width: 500px;">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" name="email" class="form-control" id="staticEmail" value="email@example.com">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control" id="inputPassword"
+                        placeholder="Password" value="123456">
+                </div>
+            </div>
+        </form>
+
+        <button class="btn btn-primary">FormToJson</button>
+
+        <pre class="result mt-4"></pre>
+    </div>
+
+    <script>
+        function toJson(formObject) {
+            let formData = {};
+            $.each(formObject, function (index, element) {
+                formData[element.name] = element.value;
+            });
+            return formData;
+        }
+
+        $('button').on('click', function () {
+            let formData = toJson($('.myForm').serializeArray());
+            console.log(formData);
+            $('.result').text(JSON.stringify(formData, undefined, 4));
+            return false;
+        });
+    </script>
+</body>
+
+</html>
