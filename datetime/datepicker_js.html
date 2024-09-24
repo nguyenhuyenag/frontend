@@ -10,9 +10,13 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <script>
         $(function () {
-            $("#datepicker").datepicker({ "dateFormat": "dd-mm-yy"}).datepicker("setDate", new Date());
+            $("#datepicker")
+                .datepicker({ "dateFormat": "dd-mm-yy"})
+                .datepicker("setDate", new Date());
+
             $('button').click(function () {
-                console.log($('#datepicker').val());
+                // console.log($('#datepicker').val());
+                $('.log').text($('#datepicker').val());
             });
         });
     </script>
@@ -22,6 +26,7 @@
     <div class="container mt-4">
         <p>Date: <input type="text" id="datepicker"></p>
         <button class="btn btn-primary">Get date</button>
+        <h4 class="log mt-2"></h4>
     </div>
 </body>
 

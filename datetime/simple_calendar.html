@@ -4,6 +4,7 @@
 <head>
     <title>A simple calendar</title>
     <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../commons/css/bootstrap-4.3.1.min.css">
     <style>
         body {
@@ -14,34 +15,52 @@
 
 <body>
     <label for="calendar">Select: </label>
-    <select></select>
-    <h2>JANUARY</h2>
-    <h3>31</h3>
+    <select id="calendar"></select>
+    <h2 id="month-name">JANUARY</h2>
+    <h3 id="days-count">31</h3>
+
     <script>
-        const arr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        let month = document.querySelector("h2");
-        let select = document.querySelector("select");
-        let day_of_month = document.querySelector("h3");
-        // create select box
-        arr.forEach((v, i) => {
-            let el = document.createElement("option");
-            el.value = i + 1;
-            el.innerHTML = v;
-            select.appendChild(el);
-        });
-        let choice = 0, day = 31;
-        select.onchange = function () {
-            choice = parseInt(select.value);
-            month.innerHTML = arr[choice - 1].toUpperCase();
-            if (choice === 2) {
-                day = 28;
-            } else if ([4, 6, 9, 11].includes(choice)) {
-                day = 30;
-            } else {
-                day = 31;
+        const months = [
+            { name: "January", days: 31 },
+            { name: "February", days: 28 },
+            { name: "March", days: 31 },
+            { name: "April", days: 30 },
+            { name: "May", days: 31 },
+            { name: "June", days: 30 },
+            { name: "July", days: 31 },
+            { name: "August", days: 31 },
+            { name: "September", days: 30 },
+            { name: "October", days: 31 },
+            { name: "November", days: 30 },
+            { name: "December", days: 31 }
+        ];
+
+        // jQuery ready function
+        $(function () {
+            const $monthLabel = $("#month-name");
+            const $daysCount = $("#days-count");
+            const $select = $("#calendar");
+
+            // Create select options using jQuery
+            $.each(months, function (index, month) {
+                $select.append(new Option(month.name, index));
+            });
+
+            // Function to update the month and day count
+            function updateMonth(index) {
+                const month = months[index];
+                $monthLabel.text(month.name.toUpperCase());
+                $daysCount.text(month.days);
             }
-            day_of_month.innerHTML = day;
-        }
+
+            // Change event handler
+            $select.on("change", function () {
+                updateMonth(this.value);
+            });
+
+            // Initialize with the first month (January)
+            updateMonth(0);
+        });
     </script>
 </body>
 
