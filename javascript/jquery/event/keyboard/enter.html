@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ContextMenu</title>
+    <title>Enter</title>
     <link rel="shortcut icon" href="#">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
@@ -11,30 +11,35 @@
         body {
             counter-reset: section;
         }
+
         h4::before {
             counter-increment: section;
             content: counter(section) ") ";
         }
+
         h4 {
             color: brown;
         }
     </style>
+
+    <script>
+        $(function () {
+            var i = 0;
+            $('#search').on('keyup', (event) => {
+                const id = event.key || event.which || event.keyCode || 0;
+                if (id === 'Enter' || id === 13) {
+                    $('.log').text(++i);
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
     <div class="container mt-4">
-        <h4>contextmenu()</h4>
-        <p>Bắt sự kiện khi người dùng bấm chuột phải trên một phần tử</p>
-        <pre>
-            $("button").contextmenu(function(event) {
-                console.log("Context menu triggered on button");
-                event.preventDefault(); // Ngăn chặn hiển thị menu mặc định của trình duyệt
-            });
-
-            $(document).on("contextmenu", function(event) {
-                console.log("Key pressed: " + event.key);
-            });
-        </pre>
+        <h4>Bắt sự kiện phím Enter vào input</h4>
+        <input id="search" type="search" class="form-control" style="width: 400px;">
+        <p class="log"></p>
     </div>
 </body>
 
