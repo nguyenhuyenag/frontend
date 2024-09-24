@@ -25,7 +25,14 @@
     <script>
         $(function () {
             var i = 0;
-            $('#search').on('keyup', (event) => {
+            $('#search1').on('keyup', (event) => {
+                const id = event.key || event.which || event.keyCode || 0;
+                if (id === 'Enter' || id === 13) {
+                    $('.log').text(++i);
+                }
+            });
+            
+            $('#search2').on('keydown', (event) => {
                 const id = event.key || event.which || event.keyCode || 0;
                 if (id === 'Enter' || id === 13) {
                     $('.log').text(++i);
@@ -38,8 +45,9 @@
 <body>
     <div class="container mt-4">
         <h4>Bắt sự kiện phím Enter vào input</h4>
-        <input id="search" type="search" class="form-control" style="width: 400px;">
-        <p class="log"></p>
+        <input id="search1" type="search" class="form-control" style="width: 400px;" placeholder="Nhấn và nhả phím Enter">
+        <input id="search2" type="search" class="form-control mt-3" style="width: 400px;" placeholder="Nhấn và giữ phím Enter">
+        <h3 class="log"></h3>
     </div>
 </body>
 
