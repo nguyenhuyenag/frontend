@@ -3,8 +3,8 @@
 
 <head>
     <title>Numpad 1</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font: 71%/1.5 Verdana, Sans-Serif;
+            font: 71%/1.5 Verdana, sans-serif;
             background: #eee;
         }
 
@@ -38,6 +38,7 @@
             background: #fff;
             border: 1px solid #f9f9f9;
             border-radius: 5px;
+            cursor: pointer;
         }
 
         .capslock,
@@ -49,7 +50,8 @@
         }
 
         #keyboard .tab,
-        #keyboard .delete {
+        #keyboard .delete,
+        #keyboard .left-shift {
             width: 70px;
         }
 
@@ -57,28 +59,13 @@
             width: 80px;
         }
 
-        #keyboard .return {
-            width: 90px;
-        }
-
-        #keyboard .left-shift {
-            width: 70px;
-        }
-
+        #keyboard .return,
         #keyboard .switch {
             width: 90px;
         }
 
         #keyboard .rightright-shift {
             width: 109px;
-        }
-
-        .lastitem {
-            margin-right: 0;
-        }
-
-        .uppercase {
-            text-transform: uppercase;
         }
 
         #keyboard .space {
@@ -92,6 +79,10 @@
             font-size: 16px;
         }
 
+        .uppercase {
+            text-transform: uppercase;
+        }
+
         .on {
             display: none;
         }
@@ -101,7 +92,18 @@
             top: 1px;
             left: 1px;
             border-color: #e5e5e5;
-            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 40vh;
+        }
+
+        .justList {
+            list-style: none;
+            padding: 0;
         }
     </style>
     <script>
@@ -109,23 +111,29 @@
             arr.sort(() => Math.random() - 0.5);
         }
         $(function () {
-            let source = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-            while (source.length > 0) {
-                shuffle(source);
-                let txt = source.pop();
-                if (source.length != 4) {
-                    $('<li />', { html: txt }).appendTo('ul.justList');
-                } else {
-                    $('<li />', { html: txt, class: 'clearl'}).appendTo('ul.justList');
-                }
-            }
+            // let source = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            // while (source.length > 0) {
+            //     shuffle(source);
+            //     let txt = source.pop();
+            //     if (source.length != 4) {
+            //         $('<li />', { html: txt }).appendTo('ul.justList');
+            //     } else {
+            //         $('<li />', { html: txt, class: 'clearl' }).appendTo('ul.justList');
+            //     }
+            // }
+            let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            shuffle(numbers);
+            numbers.forEach((txt, index) => {
+                const className = (numbers.length - index !== 5) ? '' : 'clearl';
+                $('<li />', { html: txt, class: className }).appendTo('ul.justList');
+            });
         });
     </script>
 </head>
 
 <body>
     <div class="container mt-2 mb-4">
-        <div class="text-center">
+        <div>
             <ul id="keyboard" class="justList"></ul>
         </div>
     </div>
