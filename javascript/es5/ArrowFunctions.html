@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow Functions</title>
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        button {
+            cursor: pointer;
+        }
+
+        .log {
+            list-style-type: decimal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h2>Arrow Functions</h2>
+        <p>Arrow function không có <code>this</code> riêng. Thay vào đó, <code>this</code> trong arrow function sẽ kế
+            thừa giá trị <code>this</code> của phạm vi bao quanh khi hàm được tạo ra (lexical scoping).</p>
+        <pre>
+            function Person1() {
+                this.age = 0;
+                setInterval(function growUp() {
+                    // Trong hàm thông thường, `this` trỏ tới đối tượng toàn cục hoặc `undefined` trong strict mode
+                    this.age++;
+                    console.log(this.age); // `this` ở đây không trỏ tới `Person` như mong đợi
+                }, 1000);
+            }
+            const p1 = new Person1();
+
+            function Person2() {
+                this.age = 0;
+                setInterval(() => {
+                    // Trong arrow function, `this` sẽ kế thừa từ `Person`
+                    this.age++;
+                    console.log(this.age); // `this` ở đây trỏ tới đối tượng `Person`
+                }, 1000);
+            }
+            const p2 = new Person2();
+        </pre>
+    </div>
+
+    <script>
+        function Person1() {
+            this.age = 0;
+            setInterval(function growUp() {
+                // Trong hàm thông thường, `this` trỏ tới đối tượng toàn cục hoặc `undefined` trong strict mode
+                this.age++;
+                console.log("Person1: ", this.age); // `this` ở đây không trỏ tới `Person` như mong đợi
+            }, 1000);
+        }
+        const p1 = new Person1();
+
+        function Person2() {
+            this.age = 0;
+            setInterval(() => {
+                // Trong arrow function, `this` sẽ kế thừa từ `Person`
+                this.age++;
+                console.log("Person2:", this.age); // `this` ở đây trỏ tới đối tượng `Person`
+            }, 1000);
+        }
+        const p2 = new Person2();
+    </script>
+</body>
+
+</html>
