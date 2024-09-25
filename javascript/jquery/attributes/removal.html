@@ -11,15 +11,20 @@
         body {
             counter-reset: section;
         }
+
         h4::before {
             counter-increment: section;
             content: counter(section) ") ";
         }
+
         h4 {
             color: brown;
         }
+
         button {
             cursor: pointer;
+            margin-bottom: 10px;
+            width: 150px;
         }
     </style>
 </head>
@@ -35,30 +40,51 @@
         <hr>
         <h4>detach & remove()</h4>
         <p>
-            Cả 2 đều được dùng để xóa bỏ phần tử khỏi cấu trúc DOM. Tuy nhiên phần tử bị xóa bằng <b>detach()</b> vẫn còn lưu trong bộ nhớ
+            Cả 2 đều được dùng để xóa bỏ phần tử khỏi cấu trúc DOM. Tuy nhiên phần tử bị xóa bằng <b>detach()</b> vẫn
+            còn lưu trong bộ nhớ
             (sự kiện, dữ liệu và phần tử con,...) và có thể phục hồi
         </p>
 
         <hr>
         <h4>Ví dụ</h4>
-        <p id="p-empty" class="alert alert-primary">
-            Hello, <span>Person</span> <em>and person</em>.
-        </p>
-        <button class="btnDetach">Call detach()</button>
-        <button class="btnEmpty">Call empty()</button>
-        <button class="btnRemove">Call remove()</button>
+        <div class="myDiv">
+            <p id="removeId" class="alert alert-primary" style="height: 50px;">
+                Hello, <span>Person</span> <em>and person</em>.
+            </p>
+        </div>
+        <div>
+            <button class="btnEmpty">empty()</button>
+            <br />
+            <button class="btnDetach">detach()</button>
+            <button class="btnUnDetach">Undo detach()</button>
+            <br />
+            <button class="btnRemove">remove()</button>
+            <!-- <button class="btnUnRemove">Undo remove()</button> -->
+        </div>
         <script>
-            $(".btnDetach").on("click", function () {
-                let item = $("#p-empty").detach();
-                console.log(item);
-            });
+            var detachItem;
+            // empty
             $(".btnEmpty").on("click", function () {
-                let item = $("#p-empty").empty();
+                let item = $("#removeId").empty();
                 console.log(item);
             });
+
+            // detach
+            $(".btnDetach").on("click", function () {
+                detachItem = $('#removeId').detach();
+                console.log(detachItem);
+            });
+            $('.btnUnDetach').click(function () {
+                if (detachItem !== null) {
+                    $('.myDiv').append(detachItem);
+                    detachItem = null;
+                }
+            });
+
+            // remove
             $(".btnRemove").on("click", function () {
-                let item = $("#p-empty").remove();
-                console.log(item);
+                let removeItem = $("#removeId").remove();
+                console.log(removeItem);
             });
         </script>
     </div>

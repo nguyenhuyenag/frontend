@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -19,16 +19,16 @@
              *      + dataType (tùy chọn): Kiểu dữ liệu mong đợi của phản hồi từ máy chủ, ví dụ như "json", "xml", "text" và "html". jQuery sẽ tự động phân tích phản hồi dựa trên kiểu dữ liệu này.
              */
             $(".btn-get").click(function () {
-                $.get("https://baconipsum.com/api/?type=meat-and-filler", function (data, status) {
+                $.get("https://baconipsum.com/api/?type=meat-and-filler", (data, status) => {
                     $('.output').text("Status: " + status + "\nData: " + data);
                 }).fail(function (xhr, status, error) {
                     console.log("Error:", error);
                 });
             });
-            
-            $('.btn-get-json').click(() => {
-                $.getJSON("https://dummyjson.com/products/1", function (data, status) {
-                    let json = JSON.stringify(data, undefined, 4);
+
+            $('.btn-get-json').click(function () {
+                $.getJSON("https://dummyjson.com/products/1", (data, status) => {
+                    let json = JSON.stringify(data, null, 4);
                     $('.output').text(json);
                 }).fail(function (xhr, status, error) {
                     console.log("Error:", error);

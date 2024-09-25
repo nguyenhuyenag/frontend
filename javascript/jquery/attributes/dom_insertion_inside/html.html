@@ -30,10 +30,11 @@
 <body>
     <div class="container mt-4 mb-4">
         <h4>html()</h4>
-        <p>Là một phương thức trong jQuery, được sử dụng để lấy hoặc đặt nội dung HTML của phần tử đã chọn. Khi bạn sử
+        <p>Là một phương thức trong jQuery, được sử dụng để lấy hoặc đặt nội dung HTML của phần tử đã chọn. Khi sử
             dụng <b>html()</b> mà không truyền tham số, nó sẽ trả về nội dung HTML của phần tử đã chọn. Khi truyền một
             chuỗi nội dung HTML vào .html(), nó sẽ đặt nội dung HTML mới cho phần tử đã chọn.
         </p>
+
         <h4>Ví dụ</h4>
         <pre>
             &lt;div class="demo-container"&gt;
@@ -48,12 +49,16 @@
             // Đặt nội dung HTML mới cho phần tử div
             $("div").html("&lt;p&gt;New HTML content&lt;/p&gt;");
         </pre>
+
         <div class="alert alert-success">
             <p class="text-danger">This is a text</p>
         </div>
+
         <button id="htmlNoneParam">html()</button>
         <button id="htmlWithParam">html(params)</button>
+
         <p><b>Note:</b> Xem kết quả trong F12</p>
+
         <script>
             $(function () {
                 $('#htmlNoneParam').on('click', function () {

@@ -7,17 +7,22 @@
     <link rel="shortcut icon" href="#">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        button {
+            cursor: pointer;
+        }
+    </style>
     <script>
         $(function () {
-            $("button").click(function () {
+            $('button').click(function () {
                 $.ajaxSetup({
-                    cache: false // Đổi thành true và chạy để thấy khác biệt
+                    cache: false // Đổi thành `true` và chạy sẽ thấy nhanh hơn do lưu cache
                 });
                 const URL = "https://www.w3schools.com/jquery/demo_ajax_script.js";
                 $.getScript(URL, function (data, textStatus, jqxhr) {
-                    console.log(data); // Data returned
-                    console.log(textStatus); // Success
-                    console.log(jqxhr.status); // 200
+                    console.log(data);          // Data returned
+                    console.log(textStatus);    // Success
+                    console.log(jqxhr.status);  // 200
                 });
                 // $.getScript(URL)
                 //     .done(function (script, textStatus) {

@@ -13,13 +13,6 @@
             cursor: pointer;
         }
     </style>
-    <script>
-        $(function () {
-            $("button").click(function () {
-                $("#result").load("https://dummyjson.com/products/1");
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -31,6 +24,13 @@
             <h2>Let jQuery AJAX Change This Text</h2>
         </div>
     </div>
+    <script>
+        $(function () {
+            $("button").click(function () {
+                $("#result").load("https://dummyjson.com/products/1");
+            });
+        });
+    </script>
 </body>
 
 </html>
