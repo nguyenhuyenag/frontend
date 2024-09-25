@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <script>
         function addLog(content) {
-            $("#logEntry").append($("<li/>").html(content));
+            $("#log").append($("<li/>").html(content));
         }
 
         $(function () {
-            let newPromise = $.Deferred();
+            let myPromise = $.Deferred();
             
-            $.when(newPromise).done(function () {
+            $.when(myPromise).done(function () {
                 addLog("$when().done 1st");
             });
 
-            $.when(newPromise).done(function () {
+            $.when(myPromise).done(function () {
                 addLog("$when().done 2nd");
             });
 
-            newPromise.then(function () {
+            myPromise.then(function () {
                 addLog("Then() 1st");
             })
             .always(function () {
@@ -56,7 +56,7 @@
             Deferreds là một cách để xử lý các tác vụ bất đồng bộ, đảm bảo rằng các tác vụ này được thực thi một cách
             tuần tự và cho phép bạn thực hiện các hành động khi các tác vụ này hoàn thành
         </p>
-        <ul id="logEntry"></ul>
+        <ul id="log"></ul>
     </div>
 </body>
 

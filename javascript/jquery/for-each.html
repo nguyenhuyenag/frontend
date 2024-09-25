@@ -37,8 +37,8 @@
             <li>Soda</li>
         </ul>
         <pre>
-            $('li').each((index, e) => {
-                console.log(index, $(e).text());
+            $('li').each((index, element) => {
+                console.log(index, $(element).text());
             });
 
             // Or
@@ -56,8 +56,8 @@
             ];
         </pre>
         <pre>
-            $.each(json, function(index, e) {
-                console.log(index, e);
+            $.each(json, function(index, element) {
+                console.log(index, element);
             });
         </pre>
 
