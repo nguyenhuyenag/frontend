@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Backgrounds Color</title>
+    <style>
+        h3 {
+            counter-increment: section;
+        }
+        h3::before {
+            content: counter(section) ") ";
+        }
+        .myDiv {
+            background-color: green;
+        }
+        .first {
+            opacity: 0.1;
+        }
+        .second {
+            opacity: 0.3;
+        }
+        .third {
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>CSS background properties:</h3>
+        <ul>
+            <li><code>background-color</code></li>
+            <li><code>background-image</code></li>
+            <li><code>background-repeat</code></li>
+            <li><code>background-attachment</code></li>
+            <li><code>background-position</code></li>
+            <li><code>background</code> (shorthand property)</li>
+        </ul>
+        <h3>Transparent Boxes</h3>
+        <div class="myDiv first">
+            <h1>opacity 0.1</h1>
+        </div>
+        <div class="myDiv second">
+            <h1>opacity 0.3</h1>
+        </div>
+        <div class="myDiv third">
+            <h1>opacity 0.6</h1>
+        </div>
+        <div class="myDiv fourth">
+            <h1>opacity 1 (default)</h1>
+        </div>
+    </div>
+</body>
+
+</html>
