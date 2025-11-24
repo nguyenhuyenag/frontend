@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Backgrounds Repeat</title>
+    <style>
+        body {
+            background-image: url("https://www.w3schools.com/css/img_tree.png");
+            background-repeat: no-repeat;
+            /* mặc định */
+            transition: background 0.3s ease;
+        }
+    </style>
+</head>
+
+
+</head>
+
+<body>
+    <h1>Hello World!</h1>
+    <p>W3Schools background image example.</p>
+
+    <h3>Chọn kiểu lặp background:</h3>
+
+    <label>
+        <input type="radio" name="repeat" value="no-repeat" checked>
+        no-repeat
+    </label>
+    <br>
+
+    <label>
+        <input type="radio" name="repeat" value="repeat-x">
+        repeat-x
+    </label>
+    <br>
+
+    <label>
+        <input type="radio" name="repeat" value="repeat-y">
+        repeat-y
+    </label>
+
+    <script>
+        const radios = document.querySelectorAll('input[name="repeat"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.body.style.backgroundRepeat = this.value;
+            });
+        });
+    </script>
+
+</body>
+
+</html>
